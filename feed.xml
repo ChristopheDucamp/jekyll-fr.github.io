@@ -1,0 +1,1017 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jekyll-fr</title>
+    <description>Communauté francophone des utilisateurs de Jekyll</description>
+    <link>http://jekyll-fr.org//</link>
+    <atom:link href="http://jekyll-fr.org/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 12 Nov 2016 21:27:13 +0100</pubDate>
+    <lastBuildDate>Sat, 12 Nov 2016 21:27:13 +0100</lastBuildDate>
+    <generator>Jekyll v3.3.0</generator>
+    
+      <item>
+        <title>Process de design d'un portfolio</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://medium.com/@katfukui/the-design-portfolio-workflow-a94030d0b39e#.uut2a0ulw&quot;&gt;The Design Portfolio Workflow&lt;/a&gt; de @katmeister, s’adresse aux webdesigners curieux de se frotter un peu à la ligne de commande et à Jekyll. Nous espérons qu’il vous permettra de faire vos premiers pas avec Jekyll, d’apprécier la liberté et la souplesse qu’il procure et qui sait de pouvoir ensuite &lt;a href=&quot;/2016/10/29/creer-un-theme-pour-jekyll/&quot;&gt;développer des thèmes pour Jekyll&lt;/a&gt;. 😊&lt;/p&gt;
+
+&lt;h2 id=&quot;un-guide-complet-pour-coder-et-dployer-un-site-tout-en-ligne-de-commande&quot;&gt;Un guide complet pour coder et déployer un site, tout en ligne de commande.&lt;/h2&gt;
+
+&lt;p&gt;Donc j’étais en train de mettre à jour mon &lt;a href=&quot;http://www.katfukui.com/&quot;&gt;portfolio&lt;/a&gt;, j’éditais quelques liens dans le pied de page sur toutes les pages et j’ai pensé… putain mais que suis-je en train de faire de ma vie ? N’y aurait-il pas un moyen plus intelligent de faire ? J’étais dans l’expectative quand &lt;a href=&quot;https://medium.com/u/57b87df79e32&quot;&gt;James&lt;/a&gt; m’a suggéré de tester &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;. Mon épopée commence donc ici.&lt;/p&gt;
+
+&lt;p&gt;Je partage ce guide pas-à-pas car je pense que ce workflow pour un portfolio peut avoir de la valeur aux yeux de ceux qui souhaitent bénéficier de méthodes d’ingénierie robustes et éprouvées sans renoncer à leur amour du détail dans le design. Les designers aiment les systèmes clairs et les choses propres, donc pourquoi ne pas appliquer aussi cela à notre code ?&lt;/p&gt;
+
+&lt;p&gt;J’espère aussi que cet article montre aux designers curieux du code que ce n’est pas la peine d’avoir peur des outils modernes de développement web. Ça vous branche ? Allez, c’est parti !&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*HaArgKPM5NEVxucSnAVkpQ/RS/w704.jpeg?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Ce type, OK ?&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;cest-quoi-jekyll-&quot;&gt;C’est quoi Jekyll ?&lt;/h2&gt;
+
+&lt;p&gt;Jekyll est un “générateur de site, simple et paré pour le blog”, ce qui signifie que vous créez des contenus dynamiques et des modèles sur votre ordinateur en local, puis Jekyll recrache le tout en fichiers statiques HTML et CSS que vous pouvez déposer sur votre site hébergé. Chaque entrée de portfolio est traitée comme un article de blog et est extrêmement simple à créer et à éditer. Jekyll inclus également un serveur web de test et supporte Sass.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*pUi-rGl2BFZ2HuVMj_HsiA/RS/w704.gif?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Liz, j'ai été là bas et c'est incroyable.&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Rapide ✔ Propre ✔ Simple ✔ Complet ✔&lt;/p&gt;
+
+&lt;p&gt;OK, tu m’intéresses.&lt;/p&gt;
+
+&lt;h2 id=&quot;dveloppons-un-portfolio-&quot;&gt;Développons un portfolio !&lt;/h2&gt;
+
+&lt;p&gt;C’est assez fascinant pour vous ? Développons et déployons un site ensemble pour faire une démonstration du process de travail.
+Premièrement, nous allons lancer le terminal et travailler avec la ligne de commande.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*-novrtLzHXbmEmpM10a7Qg/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Le terminal&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Même si vous n’avez pas beaucoup l’habitude de taper des commandes, vous vous en sortirez en connaissant les bases, comme se déplacer dans les dossiers de votre répertoire de travail. Vous pouvez apprendre les bases &lt;a href=&quot;http://klare.io/terminal-commands.html&quot;&gt;ici&lt;/a&gt; ou &lt;a href=&quot;http://www.iamtomnewton.com/blog/designers-guide-command-line/&quot;&gt;ici&lt;/a&gt;. Sinon, le copier-coller n’est pas si mauvaise chose pour commencer à apprendre.&lt;/p&gt;
+
+&lt;p&gt;Installons Jekyll&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; ! Dans le terminal, j’ai tapé :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install jekyll bundler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Par défaut, le terminal s’ouvre dans votre dossier utilisateur. Vous pouvez voir les fichiers et les dossiers du répertoire courant en entrant &lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;. Ça me va très bien de créer mon nouveau portfolio à cet endroit, donc je vais taper :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new mon-site
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;mon-site
+jekyll serve
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Excellent ! J’ai donc maintenant un dossier sur mon ordinateur nommé &lt;code class=&quot;highlighter-rouge&quot;&gt;mon-site&lt;/code&gt;. La commande &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; lance un serveur web local pour prévisualiser votre site à l’adresse &lt;a href=&quot;http://localhost:4000&quot;&gt;http://localhost:4000&lt;/a&gt;. Je vais garder cet onglet ouvert dans mon navigateur.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*BrFV6ggy3qaZsfUQnojCVQ/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Le thème par défaut de Jekyll&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;plongeons-dans-les-fichiers&quot;&gt;Plongeons dans les fichiers&lt;/h2&gt;
+
+&lt;p&gt;Regardons à quoi ressemble l’arborescence de notre site Jekyll en ouvrant le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;mon-site&lt;/code&gt; dans notre éditeur de texte préféré. J’ai utilisé Sublime Text pendant des années mais récemment je suis passé à &lt;a href=&quot;http://atom.io/&quot;&gt;Atom&lt;/a&gt;. C’est bien documenté et les paquets de la communauté sont assez mortels - &lt;a href=&quot;https://atom.io/packages/pigments&quot;&gt;pigments&lt;/a&gt;, &lt;a href=&quot;https://atom.io/packages/emmet&quot;&gt;Emmet&lt;/a&gt; et &lt;a href=&quot;https://atom.io/packages/bezier-curve-editor&quot;&gt;bezier-curve-editor&lt;/a&gt; pour n’en citer que quelques uns.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*18hVdarzmkx6KkSvty5Uaw/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Le dossier mon-site ouvert dans Atom&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Pour ce guide, je vais utiliser &lt;a href=&quot;http://atom.io/&quot;&gt;Atom&lt;/a&gt;. Vous remarquerez le panneau avec l’arborescence de fichier sur la gauche. Laissez-moi vous la détailler :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mon-site/
+|
+|-- _config.yml    &lt;span class=&quot;c&quot;&gt;# Configuration de votre site&lt;/span&gt;
+|-- _drafts/       &lt;span class=&quot;c&quot;&gt;# Articles non publiés&lt;/span&gt;
+|-- _includes/     &lt;span class=&quot;c&quot;&gt;# Composants HTML réutilisables&lt;/span&gt;
+|-- _layouts/      &lt;span class=&quot;c&quot;&gt;# Modèles&lt;/span&gt;
+|-- _posts/        &lt;span class=&quot;c&quot;&gt;# Articles (ou entrées de portfolio !)&lt;/span&gt;
+|-- _sass/         &lt;span class=&quot;c&quot;&gt;# Fichiers Sass&lt;/span&gt;
+|-- _site/         &lt;span class=&quot;c&quot;&gt;# Votre site généré&lt;/span&gt;
+|-- css/           &lt;span class=&quot;c&quot;&gt;# fichier CSS principal&lt;/span&gt;
+|-- about.md       &lt;span class=&quot;c&quot;&gt;# Page à propos&lt;/span&gt;
+|-- index.html     &lt;span class=&quot;c&quot;&gt;# index du site&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;C’est l’arborescence par défaut. Tout dossier dont le nom commence par un underscore &lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt; ne sera pas généré tel quel. Par exemple quand Jekyll va générer votre site, il ne va pas créer un dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts&lt;/code&gt;, par contre il générera le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; puisqu’il n’y a pas d’underscore devant.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez ajouter autant de dossiers que vous voulez pour organiser vos icônes, vos vignettes, vos fichiers JavaScript, etc. Ils seront copiés dans le site généré tels quels. Organisez-vous comme bon vous semble, voici quelques exemples de dossiers :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;assets/        &lt;span class=&quot;c&quot;&gt;# images du projet&lt;/span&gt;
+images/        &lt;span class=&quot;c&quot;&gt;# fichiers SVG, images diverses&lt;/span&gt;
+js/            &lt;span class=&quot;c&quot;&gt;# fichiers Javascript, les vôtres et ceux des différentes bibliothèques utilisées.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;modifier-les-paramtres-de-votre-site&quot;&gt;Modifier les paramètres de votre site&lt;/h2&gt;
+
+&lt;p&gt;Jekyll inclus ce super fichier nommé &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; dans le répertoire racine. Vous pouvez définir &lt;a href=&quot;http://jekyllrb.com/docs/configuration/&quot;&gt;n’importe quel paramètre&lt;/a&gt; global de votre portfolio dedans. Ouvrons-le et personnalisons tout ça !&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*fF_CWur2wd6DS7uQDGX6ew/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Remplissez vos infos !&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;J’ai ajouté un paramètre &lt;em&gt;permalink&lt;/em&gt; pour définir comment je voulais construire les URLs du site (sinon par défaut la date de l’article est présente). J’ai aussi ajouté une variable &lt;code class=&quot;highlighter-rouge&quot;&gt;dribbble_username&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;À chaque fois que nous allons modifier &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;, il nous faudra relancer le serveur de Jekyll. Donc une fois les changements effectués, arrêtez le serveur en ligne de commande avec le raccourci &lt;code class=&quot;highlighter-rouge&quot;&gt;ctrl-c&lt;/code&gt;. Entez à nouveau &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; et jetez un coup d’œil à localhost !&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*uDszfYceRXqPFeI7Xm6m0w/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Les variables globales sont appliquées !&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Cette flexibilité c’est ce qui rend Jekyll si fun et simple à mettre en œuvre. Voyons comment ce concept est aussi valable pour nos articles.&lt;/p&gt;
+
+&lt;h2 id=&quot;ajoutons-notre-premier-article-&quot;&gt;Ajoutons notre premier article !&lt;/h2&gt;
+
+&lt;p&gt;À quoi sert un portfolio sans démonstration de notre travail ? Écrivons un article à propos de mon &lt;em&gt;side-projet&lt;/em&gt; d’application de livraison de nourriture pour chat, &lt;em&gt;Food Right Meow&lt;/em&gt;. Dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;, je vais créer un nouveau fichier Markdown en utilisant la convention &lt;code class=&quot;highlighter-rouge&quot;&gt;ANNEE-MOIS-JOUR-titre&lt;/code&gt;&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Le fichier de mon article est donc nommé &lt;code class=&quot;highlighter-rouge&quot;&gt;2016-11-10-livraison-nourriture-chats.markdown&lt;/code&gt;.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*kkyEEvzkXYwHlvstT7Tytg/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;YAML front matter&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Vous remarquerez une portion de contenu en haut de l’introduction de l’article sur Jekyll. Copions la dans notre nouvel article et voyons ensemble ses pouvoirs extraordinaires.&lt;/p&gt;
+
+&lt;h2 id=&quot;yaml-front-matter&quot;&gt;YAML front matter&lt;/h2&gt;
+
+&lt;p&gt;Front matter est un puissant outil qui permet de définir des variables spécifiques à une page. Ces variables sont accessibles de partout grâce aux balises Liquid, que nous allons voir très bientôt&lt;/p&gt;
+
+&lt;p&gt;Éditons notre front matter en haut de l’article entre les triple tirets :&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*CJkHCXOIOLYrssnP4zgtiw/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;C'est ici que nous définissons le titre, la date et la catégorie&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Jekyll possède quelques variables front-matter prédéfinies, mais c’est en créant vos propres variables dans vos modèles que vous en tirerez le plus parti ! Regardons comment notre premier article utilise les variables front matter :&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*-QBd-5OFh48-eCVM1sJMhA/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Ça marche !&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;liquid&quot;&gt;Liquid&lt;/h2&gt;
+
+&lt;p&gt;Alors comment ça marche tout ça ? Ces variables front matter sont référencées dans le HTML et le Markdown grâce à &lt;a href=&quot;http://shopify.github.io/liquid/&quot;&gt;Liquid&lt;/a&gt;, un langage de modélisation très facile à prendre en main. Liquid vous permet d’ajouter de la logique, comme des conditions &lt;code class=&quot;highlighter-rouge&quot;&gt;if/else&lt;/code&gt; et des boucles &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;, d’assigner des chaines de caractères à des variables. Les trucs entre &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; c’est pour faire bosser Liquid !&lt;/p&gt;
+
+&lt;p&gt;Si vous ouvrez le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;, nous pouvons le voir en action.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*FYILLFGGLdTohX7sJZjSIw/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;En préfixant nos variables avec &lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt;, Liquid va rechercher dans votre page les entrées front matter correspondantes entre les triples tirets. Si elles existent, nous pouvons écrire le texte stocké dans ces variables dans notre HTML. Cool, non ? &lt;a href=&quot;http://jekyllrb.com/docs/variables/&quot;&gt;Plus de détails sur les variables par ici&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Et si nous ajoutons encore quelques variables à nous dans le front matter pour épicer un peu nos articles :&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*j0EnKALwOPpCRrhBPaM7Nw/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Maintenant que nous disposons de toutes ces super variables, comment pouvons nous les utiliser ? Modifions notre modèle de mise en page &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt; en utilisant les variables &lt;code class=&quot;highlighter-rouge&quot;&gt;page.type&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;page.intro&lt;/code&gt; :&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*kndQjfPKY_2GF10ZE2Vobg/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Regardez ce qui est en violet&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Cool ! Vous pouvez bien entendu utiliser CSS comme à votre habitude pour mettre en forme tous les rendus de vos chouettes balises. Essayons d’autres trucs. Et si nous ajoutions des vignettes pour chaque article sur la page &lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt; ? Et leur légende aussi peut-être.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*h4YbEuULViTNp3ixMtpxKg/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Front matter c'est de la bombe !&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Hé, c’est pas trop mal. Je suis sûr que vous pouvez déjà voir comment Jekyll va automatiser votre site en utilisant Liquid et YAML.&lt;/p&gt;
+
+&lt;h2 id=&quot;crire-un-article-pour-de-vrai&quot;&gt;Écrire un article pour de vrai&lt;/h2&gt;
+
+&lt;p&gt;Vous aurez noté l’extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.md&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;.markdown&lt;/code&gt; pour vos articles. C’est l’abréviation pour Markdown, un langage léger qui convertit sans heurt du texte brut en HTML. Je me suis rendu-compte qu’écrire à l’aide de la syntaxe Markdown me permet de mieux me concentrer sur mon contenu, plutôt que de penser quelles balises fermer.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*h1nmOO9BWVno52HIGqkyyQ/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;La beauté de Markdown c’est que vous pouvez toujours utiliser HTML si vous en avez besoin. Pour forcer le rendu de Markdown à l’intérieur de balises HTML, ajoutez &lt;code class=&quot;highlighter-rouge&quot;&gt;markdown=1&lt;/code&gt; et le tour est joué ! Le meilleur des deux mondes. Voici un extrait de l’article une fois généré :&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*X7jkghcRXQKIH2BSCIxvVQ/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Ne voudrions tous pas vivre de Purring Cat ?&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;un-autre-exemple-darticle-en-md&quot;&gt;Un autre exemple d’article en .md&lt;/h2&gt;
+
+&lt;p&gt;Lorsque j’ai migré les vieux projets de mon portfolio dans Jekyll, j’ai trouvé que mélanger le HTML et Markdown c’était trop bizarre et et que ça allait à l’encontre de l’objectif de clarté de Markdown. J’ai crée &lt;a href=&quot;http://katfukui.com/clean-posts-jekyll/&quot;&gt;une démo&lt;/a&gt; qui montre ce que j’ai fait pour parvenir à des articles plus propres tout en gardant les styles désirés ! Ce n’est en aucun cas une obligation ou la bonne manière de faire - juste une technique pour satisfaire mon côté hyper-maniaque. 😊 Vous êtes libres de télécharger et de vous amuser avec les &lt;a href=&quot;https://github.com/katmeister/clean-posts-jekyll&quot;&gt;fichiers sur Github&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;ajoutons-un-peu-de-css--tout-a&quot;&gt;Ajoutons un peu de CSS à tout ça&lt;/h2&gt;
+
+&lt;p&gt;Maintenant que nous nous sommes familiarisés avec les possibilités de Jekyll et que nous avons un peu de contenu avec lequel travailler, ajoutons un peu de style ! Vous pouvez recopier le CSS ou le Sass de votre portfolio existant ou repartir de zéro.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*9nHxZAUcaEIoPxYPB9UwQg/RS/w704.jpeg?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&quot;sass&quot;&gt;Sass&lt;/h2&gt;
+
+&lt;p&gt;Vous avez probablement remarqué que les projets Jekyll sont livrés avec des fichiers Sass (avec une extension &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt;). Bien que vous n’ayez pas besoin de connaître &lt;a href=&quot;http://sass-lang.com/&quot;&gt;Sass&lt;/a&gt; pour pouvoir utiliser Jekyll, c’est un outil apprécié et recommandé dans le process de développement CSS. Sérieusement, votre CSS sera bien mieux organisé et cohérent une fois que vous l’aurez adopté. Ces &lt;a href=&quot;http://thesassway.com/beginner&quot;&gt;guides pour débutant&lt;/a&gt; m’ont beaucoup aidé quand j’ai commencé. Jekyll intègre par défaut le support de Sass, vous n’avez donc pas d’excuse pour l’adopter. 😉&lt;/p&gt;
+
+&lt;h2 id=&quot;versionnement-avec-git&quot;&gt;Versionnement avec Git&lt;/h2&gt;
+
+&lt;p&gt;Maintenant que vous vous êtes accommodés du terminal, je vous recommande vivement d’utiliser Git pour versionner votre portfolio. Git prend des “clichés” de votre &lt;strong&gt;dépôt&lt;/strong&gt; - le répertoire du projet - à chaque fois que vous faites un &lt;strong&gt;commit&lt;/strong&gt;, de façon à ce que vous puissiez revenir à des versions antérieures de votre travail quand c’est nécessaire. Si vous travaillez avec une autre personne, vous pouvez travailler chacun sur votre propre &lt;strong&gt;branche&lt;/strong&gt; du projet et &lt;strong&gt;fusionner&lt;/strong&gt; ensuite tout ça dans la branche  &lt;strong&gt;master&lt;/strong&gt;, visible de tous les intervenants du projet.&lt;/p&gt;
+
+&lt;h2 id=&quot;configurer-git&quot;&gt;Configurer Git&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://git-scm.com/downloads&quot;&gt;Téléchargez et installez Git&lt;/a&gt;. De retour dans votre terminal, entrez ces commandes (et ajoutez vos propres infos entre les guillemets) :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config --global user.name “Votre Nom”
+git config --global user.email &lt;span class=&quot;s2&quot;&gt;&quot;[adresse mail]&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Super, nous sommes parés pour Git ! Mais notre projet ne pourra pas utiliser Git tant que nous ne l’aurons pas initialisé. Dans le répertoire &lt;code class=&quot;highlighter-rouge&quot;&gt;mon-site&lt;/code&gt;, je vais donc taper :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Facile ! Notre nouveau dépôt Git est vide, ajoutons-y donc nos fichiers.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Super, notre projet est ajouté au dépôt local et est prêt à être enregistré dans un commit. Prenons une photo de notre dépôt en faisant notre premier commit ! Utilisez l’option &lt;code class=&quot;highlighter-rouge&quot;&gt;-m&lt;/code&gt; suivi d’un message significatif entre guillemets.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git commit -m &lt;span class=&quot;s2&quot;&gt;&quot;Première entrée du portfolio&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Notre projet possède officiellement un historique ! Git fonctionne en local, mais GitHub est un service de stockage distant pour &lt;strong&gt;pousser&lt;/strong&gt; nos dépôts sur le web et les partager avec le reste du monde. Connectons notre dépôt local à un dépôt distant sur GitHub et poussons notre premier commit.&lt;/p&gt;
+
+&lt;h2 id=&quot;crer-un-dpt-sur-github&quot;&gt;Créer un dépôt sur GitHub&lt;/h2&gt;
+
+&lt;p&gt;Maintenant que nous avons initialisé Git pour notre portfolio, configurons un dépôt distant sur GitHub.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/join&quot;&gt;Créez-vous un compte&lt;/a&gt;, si vous n’en possédez pas encore.&lt;/li&gt;
+  &lt;li&gt;Créez un &lt;a href=&quot;https://github.com/new&quot;&gt;nouveau dépôt&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*kFGsk6bcyTe6-_c2-G0GzQ/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Dans le coin en haut à droite&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Donnez un nom et ajoutez une description à votre dépôt. Créez le dépôt !&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*_kV4Itznh62DLnpdKBCGSA/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Maintenant que vous avez créé le dépôt, vous allez voir cette page s’afficher sur GitHub :&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*73bT5OREQUaVsdTpqfbA-w/RS/w704.jpeg?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;C’est la partie “publier un dépôt existant en ligne de commande” qui nous intéresse. Je vais copier-coller ces commandes dans le terminal. &lt;code class=&quot;highlighter-rouge&quot;&gt;git remote add origin&lt;/code&gt; connecte les deux dépôts pour permettre le déploiement. &lt;code class=&quot;highlighter-rouge&quot;&gt;git push&lt;/code&gt; pousse les commits locaux dans votre dépôt distant !&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Actualisez la page de votre dépôt distant et félicitez vous ! ON A RÉUSSI. Maintenant le monde entier peut admirer notre super portfolio !&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*47y0QjcanT-aWr1CscE6sA/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Voici un &lt;a href=&quot;http://readwrite.com/2013/09/30/understanding-github-a-journey-for-beginners-part-1&quot;&gt;guide pour débutant très sympa&lt;/a&gt; pour des explications plus détaillées.&lt;/p&gt;
+
+&lt;h2 id=&quot;github-pages&quot;&gt;GitHub Pages&lt;/h2&gt;
+
+&lt;p&gt;À partir de là, nous pouvons aller encore plus loin et configurer notre dépôt pour &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; - un hébergement gratuit sans FTP. Yep, ça veut dire que vous pouvez enregistrer et publier vos changements et voir immédiatement ces modifications en ligne !&lt;/p&gt;
+
+&lt;p&gt;C’est un écosystème complet, accessible depuis votre terminal de confiance.&lt;/p&gt;
+
+&lt;h2 id=&quot;mes-conseils-supplmentaires&quot;&gt;Mes conseils supplémentaires&lt;/h2&gt;
+
+&lt;p&gt;Parce que ce guide n’est pas déjà assez long.&lt;/p&gt;
+
+&lt;h3 id=&quot;tester-sur-mobile&quot;&gt;Tester sur mobile&lt;/h3&gt;
+
+&lt;p&gt;Le test sur mobile est inclus ! Autorisons Jekyll à accéder à notre mobile en lançant le serveur de cette manière dans le terminal :&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll serve --host 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Ensuite, récupérez votre adresse IP sur le réseau Wi-Fi local et faites là pointer vers le port 4000. En gros, vous allez taper un truc comme &lt;strong&gt;192.168.x.x:4000&lt;/strong&gt; dans votre navigateur mobile. Si vous voulez savoir comment ça marche, &lt;a href=&quot;http://zarino.co.uk/post/jekyll-local-network/&quot;&gt;lisez cet article&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;systme-de-grille&quot;&gt;Système de grille&lt;/h2&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*9nraqBzaZDQU9de3zH5Klw/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Pour un portfolio, un système de grille léger est facile à implémenter et il ne se met pas en travers de votre CSS. J’utilise &lt;a href=&quot;http://jeet.gs/&quot;&gt;Jeet&lt;/a&gt; parce que j’aime sa syntaxe et sa souplesse. Ceci dit, il y en a des tonnes de super chouettes, comme &lt;a href=&quot;http://neat.bourbon.io/&quot;&gt;Neat&lt;/a&gt; ou &lt;a href=&quot;http://daneden.github.io/Toast/&quot;&gt;Toast&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;rythme-vertical&quot;&gt;Rythme vertical&lt;/h2&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*h8vVPQhl-HT5AqIlTRoA8g/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;Typecast&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Le rythme vertical c’est l’espacement constant et la mise à l’échelle des paragraphes, des marges externes et internes, des tailles de police et des hauteurs de ligne. Trouver le bon rythme améliore la lisibilité et l’harmonie d’un site. J’utilise &lt;a href=&quot;https://github.com/modularscale/modularscale-sass&quot;&gt;modular-scale&lt;/a&gt; sur mon propre portfolio. Apprenez en davantage sur le rythme vertical &lt;a href=&quot;http://webdesign.tutsplus.com/articles/improving-layout-with-vertical-rhythm--webdesign-14070&quot;&gt;ici&lt;/a&gt; ou &lt;a href=&quot;http://typecast.com/blog/4-simple-steps-to-vertical-rhythm&quot;&gt;là&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;fin&quot;&gt;Fin&lt;/h2&gt;
+
+&lt;p&gt;Et voilà comment on crée et on déploie un joli modèle de portfolio, entièrement à partir du terminal. Vous n’avez plus qu’à créer un simple article au format texte pour les nouveaux projets et à taper quelques commandes pour le publier sur GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;J’espère que vous avez aimé construire un portfolio pour &lt;em&gt;Food Right Meow&lt;/em&gt; avec moi. Créer et redesigner votre portfolio devrait être fun et enrichissant, alors à vos claviers et à vos lignes de commande !&lt;/p&gt;
+
+&lt;h3 id=&quot;tlchargez-ou-forkez-le-dpt-de-dmohttpsgithubcomkatmeistermy-site&quot;&gt;&lt;a href=&quot;https://github.com/katmeister/my-site&quot;&gt;Téléchargez ou forkez le dépôt de démo&lt;/a&gt;.&lt;/h3&gt;
+
+&lt;h3 id=&quot;voir-la-dmo-en-actionhttpkatfukuicommy-site&quot;&gt;&lt;a href=&quot;http://katfukui.com/my-site/&quot;&gt;Voir la démo en action&lt;/a&gt;.&lt;/h3&gt;
+
+&lt;figure&gt;
+  &lt;img src=&quot;https://img.readitlater.com/i/cdn-images-1.medium.com/max/1600/1*qKtPxbGF11Ekq_B9hFRmhg/RS/w704.png?&amp;amp;ssl=1&quot; alt=&quot;&quot; /&gt;
+  &lt;figcaption&gt;&lt;small&gt;&lt;/small&gt;&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://gist.github.com/DirtyF/5d2bde5c682101b7b5d90708ad333bf3&quot;&gt;Installez Ruby et Jekyll à l’aide d’Homebrew sous Mac&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;Le plugin &lt;a href=&quot;https://github.com/Arcath/jekyll-atom/&quot;&gt;jekyll-atom&lt;/a&gt; facilite la création de posts en respectant cette convention. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Thu, 10 Nov 2016 16:42:35 +0100</pubDate>
+        <link>http://jekyll-fr.org/2016/11/10/designer-un-portfolio-avec-jekyll/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/11/10/designer-un-portfolio-avec-jekyll/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Créer un thème pour Jekyll</title>
+        <description>&lt;p&gt;Depuis la version 3.2, les webdesigners ont la possibilité de créer des thèmes pour Jekyll. Le support des thèmes sous forme de gem est encore récent mais les premiers thèmes commencent à arriver. Nous allons voir dans cet article que l’opération est assez triviale si vous êtes déjà familiarisé avec Jekyll et Git. Packager un thème se fait en quelques minutes grâce à l’utilisation de &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt;.
+Voyons ensemble à quoi ressemble le workflow de création de thème pour Jekyll.&lt;/p&gt;
+
+&lt;h2 id=&quot;pr-requis&quot;&gt;Pré-requis&lt;/h2&gt;
+
+&lt;p&gt;Nous allons supposer que vous connaissez déjà Jekyll, que vous savez créer des modèles de pages, si ce n’est pas le cas, commencez par lire &lt;a href=&quot;http://jekyllrb.com/docs/templates/&quot;&gt;la documentation officielle,&lt;/a&gt; vous verrez c’est très accessible, c’est du HTML auquel on va ajouter un peu de &lt;a href=&quot;http://shopify.github.io/liquid/&quot;&gt;Liquid&lt;/a&gt;, le langage de templating conçu pour les concepteurs de thèmes Shopify, pour accéder à nos données.&lt;/p&gt;
+
+&lt;p&gt;Nous ne nous étendrons donc pas pas sur cette partie, qui consiste à préparer vos différents modèles de pages, ce sont les conventions par défaut de Jekyll qui s’appliquent : les feuilles de styles sont stockées dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass&lt;/code&gt;, les modèles de pages dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;, les composants réutilisables dans &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt;. Enfin tous les assets (CSS, JS, images, fonts) sont regroupés dans un dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;assets&lt;/code&gt; (et non &lt;code class=&quot;highlighter-rouge&quot;&gt;_assets&lt;/code&gt; pour éviter les conflits avec le plugin &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-assets&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;On notera que pour le moment par défaut, seuls ces dossiers seront fournis par le thème, nous verrons comment y ajouter des contenus et des exemples un peu plus bas.&lt;/p&gt;
+
+&lt;p&gt;Les thèmes seront téléchargés sous forme de gem, vous devez donc avoir installé &lt;a href=&quot;http://bundler.io/&quot;&gt;bundler&lt;/a&gt; avec la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt;, ce qui est généralement le cas puisque Jekyll encourage son utilisation pour la gestion des dépendances. Enfin, il vous faut &lt;a href=&quot;https://rubygems.org/sign_up&quot;&gt;créer un compte sur Rubygems&lt;/a&gt; pour publier votre thème, ça ne vous prendra que quelques secondes si vous avez déjà un compte GitHub.&lt;/p&gt;
+
+&lt;h2 id=&quot;prparer-son-thme&quot;&gt;Préparer son thème&lt;/h2&gt;
+
+&lt;p&gt;Vous avez donc un site statique sous Jekyll et vous souhaitez le partager avec la communauté sous forme de thème. Il y a deux façons de faire, selon vos préférences. L’une d’elle consiste à utiliser la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;new-theme&lt;/code&gt; pour générer une structure de base dans laquelle vous allez pouvoir ajouter vos fichiers :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll new-theme mon-super-theme
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Cette commande va créer un dossier dans le répertoire courant, qui portera le même nom que celui que vous avez fourni en argument, étonnant non ?&lt;/p&gt;
+
+&lt;p&gt;Ce dossier comprend tous les dossiers évoqués plus haut : &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;_sass&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;assets&lt;/code&gt; ainsi qu’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; et un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;mon-super-theme.gempsec&lt;/code&gt; qui contient les informations sur votre thème.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez maintenant recopier les fichiers de votre thème dans cette structure d’exemple.&lt;/p&gt;
+
+&lt;p&gt;L’autre manière de faire, c’est de partir de votre site fonctionnel et d’adapter sa structure de manière à vous retrouver avec quelque chose qui ressemble à ça :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;├── .gitignore
+├── Gemfile
+├── LICENSE.md
+├── README.md
+├── _includes
+│   └── head.html
+│   └── ...
+├── _layouts
+│   ├── default.html
+│   ├── home.html
+│   ├── page.html
+│   └── post.html
+│   └── ...
+├── _sass
+│   ├── _base.scss
+│   ├── _variables.scss
+│   ├── ...
+├── assets
+│   ├── favicons
+│   ├── fonts
+│   └── images
+│   └── js
+│   └── css
+├── demo
+│   ├── 404.html
+│   ├── Gemfile
+│   ├── _config.yml
+│   ├── _posts
+│   │   ├── 2016-10-20-presentation-de-jekyll.md
+│   │   ├── 2016-01-02-exemple-de-contenu.md
+│   │   └── 2016-01-03-introduction.md
+│   │   └── ...
+├── mon-super-theme.gemspec
+└── screenshot.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Parmi les différences avec un site Jekyll classique, on remarque la présence d’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; un peu particulier, d’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;gemspec&lt;/code&gt; pour la spécification de la gem, d’un fichier LICENSE (MIT par défaut), d’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt;, d’une capture d’écran et d’un dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;demo&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;example&lt;/code&gt;, c’est selon).&lt;/p&gt;
+
+&lt;p&gt;Si on regarde le contenu du fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; d’une gem, il est différent de ceux que vous avez l’habitude d’utiliser. Il fait simplement référence au fichier de spécification de la gem :&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gemspec&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;En effet, c’est le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;gemspec&lt;/code&gt; qui va contenir toutes les infos sur notre thème : le numéro de version, sa description, ses dépendances, etc. Pour savoir tout ce que peut contenir ce type de fichier, je vous invite à consulter la &lt;a href=&quot;http://guides.rubygems.org/specification-reference/&quot;&gt;documentation de référence des spécifications d’une gem&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Lorsque vous utilisez la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;new-theme&lt;/code&gt; de Jekyll, par défaut, le fichier de spécification de votre gem ressemble à ça :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# coding: utf-8
+
+Gem::Specification.new do |spec|
+  spec.name          = &quot;mon-super-theme&quot;
+  spec.version       = &quot;0.1.0&quot;
+  spec.authors       = [&quot;Frank Taillandier&quot;]
+  spec.email         = [&quot;frank@taillandier.me&quot;]
+
+  spec.summary       = %q{TODO : Une courte description de votre thème, requise par Rubygems.}
+  spec.homepage      = &quot;TODO : Indiquez ici l'adresse du site de votre gem ou l'URL publique de son dépôt&quot;
+  spec.license       = &quot;MIT&quot;
+
+  spec.files         = `git ls-files -z`.split(&quot;\x0&quot;).select { |f| f.match(%r{^(assets|_layouts|_includes|_sass|LICENSE|README)}i) }
+
+  spec.add_development_dependency &quot;jekyll&quot;, &quot;~&amp;gt; 3.3&quot;
+  spec.add_development_dependency &quot;bundler&quot;, &quot;~&amp;gt; 1.12&quot;
+  spec.add_development_dependency &quot;rake&quot;, &quot;~&amp;gt; 10.0&quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Outre les méta-données à renseigner, il est intéressant de noter qu’une expression régulière basée sur une commande Git liste les fichiers à inclure dans la gem, cela implique donc que vos fichiers soient versionnés avec Git. Le minimum étant d’avoir initialisé votre dépôt, d’avoir ajouté tous les fichiers qui vont bien et d’avoir enregistré le tout : &lt;code class=&quot;highlighter-rouge&quot;&gt;git init &amp;amp;&amp;amp; git add . &amp;amp;&amp;amp; git commit -m &quot;Initial commit&quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On peut voir aussi à la fin du fichier que la version 3.3 ou supérieure de Jekyll est requise, en effet avant cette version, le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;assets&lt;/code&gt; n’était pas géré et le support initial des thèmes n’est arrivé qu’avec la version 3.2.&lt;/p&gt;
+
+&lt;p&gt;On constate aussi que &lt;code class=&quot;highlighter-rouge&quot;&gt;bundler&lt;/code&gt; est déclaré en tant que dépendance pour le développement, ainsi que &lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt;, souvent utilisé pour ajouter des tests ou des tâches automatisées.&lt;/p&gt;
+
+&lt;p&gt;Vous pouvez très bien vouloir ajouter d’autres dépendances lors de l’exécution, si vous souhaitez utiliser des plugins dans votre thème. Dans notre exemple, nous voulons ajouter la gestion d’un flux RSS, la génération d’un sitemap et des méta-données pour le SEO.&lt;/p&gt;
+
+&lt;p&gt;Nous ajoutons donc les dépendances ainsi que les version minimales requises, comme nous le ferions dans un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; à l’aide de &lt;a href=&quot;http://guides.rubygems.org/specification-reference/#add_runtime_dependency&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;spec.add_runtime_dependency&lt;/code&gt;&lt;/a&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_runtime_dependency&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-feed&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 0.8&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_runtime_dependency&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-sitemap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 0.12&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;add_runtime_dependency&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-seo-tag&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 2.0&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Une fois que votre fichier de spécification est complété, vous allez pouvoir tester votre thème.&lt;/p&gt;
+
+&lt;h2 id=&quot;tester-son-thme&quot;&gt;Tester son thème&lt;/h2&gt;
+
+&lt;p&gt;Commencez par lancer &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; pour installer les dépendances mentionnées dans le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;gemspec&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;fournir-des-exemples-de-contenu&quot;&gt;Fournir des exemples de contenu&lt;/h3&gt;
+
+&lt;p&gt;Comme nous l’avons dit plus haut, pour le moment les thèmes sont livrés sans contenu et ne contiennent que les modèles et les assets. &lt;strong&gt;Lors d’une mise à jour de thème, tous ces fichiers seront écrasés&lt;/strong&gt;, c’est le principal intérêt d’utiliser une gem pour le designer ou l’utilisateur, mais à aucun moment vous ne souhaitez écraser les contenus existants.&lt;/p&gt;
+
+&lt;p&gt;Cependant, même si la gem ne contient pas de contenus, rien ne vous empêche d’en ajouter dans le dépôt de votre thème pour fournir un exemple de thème entièrement fonctionnel à vos utilisateurs.&lt;/p&gt;
+
+&lt;p&gt;Afin de ne pas mélanger les fichiers d’exemple avec ceux de votre thème, il est donc conseillé de créer un dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;demo&lt;/code&gt; (ou &lt;code class=&quot;highlighter-rouge&quot;&gt;example&lt;/code&gt; ou ce que vous voulez) et d’y stocker des contenus destinés à présenter aux utilisateurs le rendu de votre thème.&lt;/p&gt;
+
+&lt;p&gt;En plus des fichiers générés par la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;new-theme&lt;/code&gt;, nous ajouterons dans ce dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;demo&lt;/code&gt; tout ce qu’il faut pour faire tourner un site sous Jekyll :  un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;,  un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; ainsi que des pages et des posts bien entendu. Vous pouvez également ajouter des exemples de données dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;_data&lt;/code&gt; voire des collections, comme vous le feriez dans n’importe quel site.&lt;/p&gt;
+
+&lt;p&gt;Le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;demo/Gemfile&lt;/code&gt; ressemble à quelques détails près à celui que vous utiliseriez pour n’importe quel site :&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;https://rubygems.org&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;~&amp;gt; 3.3&quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;mon-super-theme&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;path: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;../&quot;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:jekyll_plugins&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-sitemap&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-seo-tag&quot;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;jekyll-feed&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Nous voyons qu’il fait référence à la gem de notre thème, mais comme pour le moment nous n’avons pas encore publié notre thème sous forme de gem, nous nous contentons de faire référence au dossier parent, qui contient les fichiers de notre thème. Cette notation est bien pratique pour tester votre thème en local. Une fois votre gem publiée, vous pourrez choisir de supprimer paramètre path de votre gem, pour que bundler aille télécharger la dernière version sur Rubygems.
+Nous listons également les plugins utilisés dans notre thème.&lt;/p&gt;
+
+&lt;p&gt;Maintenant, pour que Jekyll utilise notre thème, nous allons devoir le lui indiquer dans le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;demo/_config.yml&lt;/code&gt; en ajoutant la ligne :&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mon-super-theme&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Là encore, le nom utilisé doit être le même que celui de votre fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;gemspec&lt;/code&gt;. Nous indiquons également dans ce fichier de configuration que nous utilisons les plugins suivants :&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;gems&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-feed&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-sitemap&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jekyll-seo-tag&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Nous pouvons maintenant tester notre thème en exécutant la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve --source demo&lt;/code&gt; depuis le répertoire racine ou &lt;code class=&quot;highlighter-rouge&quot;&gt;cd demo &amp;amp;&amp;amp; bundle exec jekyll serve&lt;/code&gt;, c’est du pareil au même. N’oubliez pas d’ajouter le répertoire de destination - &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; par défaut - à votre fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Vérifiez le rendu sur différents navigateurs et appareils, aidez vous d’&lt;a href=&quot;https://github.com/gjtorikian/html-proofer&quot;&gt;html-proofer&lt;/a&gt; si vous souhaitez vous assurer que tous les liens internes fonctionnent :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;htmlproofer ./demo/_site --disable-external
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vous êtes satisfait de la première version de votre thème ? Parfait ! Veillez maintenant à bien renseigner le fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt; pour expliquer comment installer et utiliser votre thème, c’est toujours agréable d’avoir une bonne documentation à sa disposition.&lt;/p&gt;
+
+&lt;p&gt;Afin de permettre aux utilisateurs d’avoir un aperçu de votre thème, il est également recommandé d’ajouter une capture d’écran nommée &lt;code class=&quot;highlighter-rouge&quot;&gt;screenshot.png&lt;/code&gt; à la racine de votre dépôt et de l’insérer dans votre fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;README.md&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;packager-son-thme&quot;&gt;Packager son thème&lt;/h3&gt;
+
+&lt;p&gt;Une fois que votre thème est fonctionnel, documenté, vous êtes parés pour la publication. Cette étape est déjà &lt;a href=&quot;https://jekyllrb.com/docs/themes/#publishing-your-theme&quot;&gt;documentée sur le site de Jekyll&lt;/a&gt;, nous nous contenterons simplement ici de rappeler qu’elle se fait en deux temps.&lt;/p&gt;
+
+&lt;p&gt;La première commande va créer la gem à proprement parlée à partir du fichier de spécification :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem build mon-super-theme.gemspec
+  Successfully built RubyGem
+  Name: mon-super-theme
+  Version: 0.0.1
+  File: mon-super-theme-0.0.1.gem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Comme il est inutile de versionner la gem générée (mais cela ne vous dispense pas d’utiliser les tags git pour vous rappeler du moment où vous l’avez générée), pensez donc à ajouter la ligne suivante dans votre fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*.gem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vous pouvez en profiter pour vérifier que l’installation de votre gem se déroule sans encombres :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem install mon-super-theme-0.0.1.gem
+Successfully installed mon-super-theme-0.0.1
+1 gem installed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Si tout est OK, il ne vous reste maintenant plus qu’à publier votre thème sur &lt;a href=&quot;https://rubygems.org/&quot;&gt;Rubygems&lt;/a&gt; :&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem push mon-super-theme-0.0.1.gem
+Pushing gem to https://rubygems.org...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Et voilà ! Votre thème peut maintenant être utilisé avec Jekyll. Il n’existe pas encore de site officiel qui répertorie tous les thèmes installables via des gems pour Jekyll, c’est donc à vous de communiquer sur la disponibilité de votre thème, par exemple sur &lt;a href=&quot;https://talk.jekyllrb.com/t/gem-based-themes/3089/&quot;&gt;le forum de Jekyll&lt;/a&gt;, sur Twitter avec le hashtag &lt;code class=&quot;highlighter-rouge&quot;&gt;#jekyllrb&lt;/code&gt; ou en commentaire de ce billet :).&lt;/p&gt;
+
+&lt;p&gt;Si vous cherchez des références, vous pouvez toujours prendre exemple sur des structures de thèmes accessibles sur Github, notamment :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/minima&quot;&gt;Minima&lt;/a&gt;, le thème par défaut de Jekyll, idéal pour se familiariser avec la structure que nous venons de voir,&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/daviddarnes/alembic/&quot;&gt;Alembic&lt;/a&gt; un bon point de départ un plus complet proposé par David Darnes&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mmistakes/minimal-mistakes/&quot;&gt;Minimal mistakes&lt;/a&gt;, le thème très complet de Michael Rose, qui utilise des collections et tout un tas d’autres fonctionnalités plus avancées de Jekyll.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Voilà, maintenant c’est à vous de jouer, faites de beaux thèmes pour Jekyll !&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Oct 2016 15:18:59 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Les nouveautés de Jekyll 3.3</title>
+        <description>&lt;p&gt;Plein de nouveautés pour vous simplifier la vie dans la version 3.3 de Jekyll.
+On retiendra trois fonctionnalités à tester en priorité :&lt;/p&gt;
+
+&lt;h2 id=&quot;les-themes-peuvent-dsormais-fournir-des-assets-statiques-et-dynamiques-dans-le-dossier-assets&quot;&gt;Les themes peuvent désormais fournir des assets statiques et dynamiques dans le dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;/assets&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Depuis Jekyll 3.2, il est possible de packager un thème sous forme de
+&lt;a href=&quot;http://guides.rubygems.org/&quot;&gt;gem&lt;/a&gt;, il était déjà possible d’embarquer des includes, des layouts et des fichiers Sass. Avec la version 3.3, il est enfin possible d’ajouter aussi des assets à son thème. Les développeurs de thèmes vont donc pouvoir fournir des thèmes complets et les utilisateurs pourront les tester et les mettre à jour plus simplement. Cette fonctionnalité n’est pas encore très mature et le support de fichier de configuration pour les thèmes ou l’ajout d’un dossier &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; sont en cours de discussion.&lt;/p&gt;
+
+&lt;p&gt;Pour faciliter davantage la gestion de thème, tout fichier présent dans le dossier
+&lt;code class=&quot;highlighter-rouge&quot;&gt;/assets&lt;/code&gt; de votre thème sera considéré comme faisant partie du site de l’utilisateur du thème. Vous pouvez donc ajouter du Sass, du JavaScript, du CoffeeScript, des images, des fontes et tout ce qui sera utile à la présentation et au comportement de votre thème. Les règles sont les mêmes que dans Jekyll : si un fichier comporte des entêtes YAML Front Matter, il sera converti et traité par le moteur de rendu. Si le fichier ne comporte aucun en-tête YFM, il sera simplement copié comme un asset statique.&lt;/p&gt;
+
+&lt;p&gt;Notez bien que les fichiers de l’utilisateur avec le même chemin prennent toujours le pas sur ceux de votre thème. Par exemple si un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;/assets/main.scss&lt;/code&gt; est présent dans le dossier du site de l’utilisateur, c’est lui qui sera traité en lieu et place du fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;/assets/main.scss&lt;/code&gt; présent dans la gem de votre thème.&lt;/p&gt;
+
+&lt;p&gt;Nous vous invitons à vous reporter à la &lt;a href=&quot;https://jekyllrb.com/docs/themes/#assets&quot;&gt;documentation officielle sur la gestion des assets dans les thèmes&lt;/a&gt; pour plus d’informations.&lt;/p&gt;
+
+&lt;h2 id=&quot;les-filtres-relativeurl-et-absoluteurl&quot;&gt;Les filtres &lt;code class=&quot;highlighter-rouge&quot;&gt;relative_url&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;absolute_url&lt;/code&gt;&lt;/h2&gt;
+
+&lt;p&gt;Deux nouveaux filtres font leur apparition pour simplifier la gestion des URLs dans vos templates. Fini de vous emmêler les pinceaux avec &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt;. Lorsque vous développez en local, si vous définissez la valeur de &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; afin qu’elle corresponde à votre environnement de développement, mettons par exemple &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl: &quot;/mondossier&quot;&lt;/code&gt;, le filtre &lt;code class=&quot;highlighter-rouge&quot;&gt;relative_url&lt;/code&gt; se chargera de préfixer cette valeur pour toutes les URLs que vous appelerez :&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/docs/assets/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;relative_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; =&amp;gt; /mondossier/docs/assets&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Par défaut, &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; est défini à &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;&quot;&lt;/code&gt; et sera remplacé tel quel (ne définissez jamais cette valeur à &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;/&quot;&lt;/code&gt;):&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/docs/assets/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;relative_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; =&amp;gt; /docs/assets&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Le résultat d’un appel à &lt;code class=&quot;highlighter-rouge&quot;&gt;relative_url&lt;/code&gt; produira toujours une URL relative au domaine racine.
+Le même principe s’applique au filtre &lt;code class=&quot;highlighter-rouge&quot;&gt;absolute_url&lt;/code&gt;, il ajoute les valeurs définies dans &lt;code class=&quot;highlighter-rouge&quot;&gt;baseurl&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; et facilite ainsi la création d’URLs absolues :&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/docs/assets/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;absolute_url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; =&amp;gt; http://jekyll-fr.org/mondossier/docs/assets&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;siteurl-est-maintenant-dfini-pour-le-serveur-de-dveloppement&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site.url&lt;/code&gt; est maintenant défini pour le serveur de développement&lt;/h2&gt;
+
+&lt;p&gt;Quand vous lancez la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; en local, elle va démarrer un serveur web, généralement à l’adresse &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4000&lt;/code&gt;, sur lequel vous allez pouvoir prévisualiser votre site durant la phase de développement. Si vous utilisez le filtre &lt;code class=&quot;highlighter-rouge&quot;&gt;absolute_url&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;site.url&lt;/code&gt; dans votre code, vous avez probablement dû créer un fichier de configuration pour le développement, qui va réinitialiser la valeur d’&lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; à &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;C’est maintenant inutile ! Quand vous lancez la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, Jekyll va générer votre site avec les valeurs de &lt;code class=&quot;highlighter-rouge&quot;&gt;host&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;port&lt;/code&gt; et des options relatives à SSL. Par défaut ce sera donc
+&lt;code class=&quot;highlighter-rouge&quot;&gt;url: http://localhost:4000&lt;/code&gt;. Quand vous développez en local, la valeur de &lt;code class=&quot;highlighter-rouge&quot;&gt;site.url&lt;/code&gt; sera donc remplacée par &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:4000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;C’est le comportement par défaut lorsque vous exécutez Jekyll en local. Ce ne sera pas le cas si vous exécutez &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; si vous prévisez un environnement de production avec &lt;code class=&quot;highlighter-rouge&quot;&gt;JEKYLL_ENV=production&lt;/code&gt;. Si la variable d’environnement &lt;code class=&quot;highlighter-rouge&quot;&gt;JEKYLL_ENV&lt;/code&gt; possède une autre valeur que
+&lt;code class=&quot;highlighter-rouge&quot;&gt;development&lt;/code&gt; (sa valeur par défaut), Jekyll n’écrasera pas la valeur du paramètre &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; définie dans votre fichier de configuration. Attention, cela ne s’applique qu’à la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;serve&lt;/code&gt;, pas à la commande build`.&lt;/p&gt;
+
+&lt;h2 id=&quot;et-bien-plus-encore&quot;&gt;Et bien plus encore&lt;/h2&gt;
+
+&lt;p&gt;Pour avoir le détail de tous les correctifs et les améliorations mineures apportées, vous pouvez &lt;a href=&quot;https://jekyllrb.com/docs/history/#v3-3-0&quot;&gt;consulter le CHANGELOG complet&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jekyllez bien !&lt;/p&gt;
+</description>
+        <pubDate>Fri, 07 Oct 2016 11:10:38 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/10/07/jekyll-3-3-est-dispo/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/10/07/jekyll-3-3-est-dispo/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Utiliser des plugins Jekyll avec GitHub Pages</title>
+        <description>&lt;p&gt;La popularité de Jekyll est en partie due à son support natif par GitHub Pages. Si cette solution gratuite est bien pratique, elle n’en reste pas moins limitée en terme de support de plugins Jekyll et ce pour des raisons de sécurité. Si vous voulez utiliser des plugins comme &lt;a href=&quot;/2016/08/31/gestion-images-responsive-avec-jekyll-cloudinary/&quot;&gt;jekyll-cloudinary&lt;/a&gt; ou &lt;a href=&quot;https://github.com/jekyll/jekyll-assets&quot;&gt;jekyll-assets&lt;/a&gt;, il vous faudra générer le site en local et le publier sur Github.&lt;/p&gt;
+
+&lt;p&gt;Nous allons voir que cette opération est facilement automatisable à l’aide d’un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt;, la manière la plus courante en Ruby de créer des tâches.&lt;/p&gt;
+
+&lt;h2 id=&quot;pr-requis&quot;&gt;Pré-requis&lt;/h2&gt;
+
+&lt;p&gt;Nous partons du principe que vous avez déjà un site qui tourne avec Jekyll sur GitHub, si ce n’est pas le cas, reportez-vous à la &lt;a href=&quot;https://help.github.com/articles/using-jekyll-as-a-static-site-generator-with-github-pages/&quot;&gt;documentation officielle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Comme nous allons utiliser &lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt; pour écrire une tâche automatisée, il vous faut ajoutez la dépendance à votre fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;, si elle n’est pas déjà présente :&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;rake&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Une fois que c’est fait, lancez &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt; pour installer &lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Maintenant que vous êtes parés sous allons voir les deux cas de figures possibles dans Github : les pages utilisateurs ou organisation et les pages projets.&lt;/p&gt;
+
+&lt;h2 id=&quot;pages-utilisateur-et-organisation&quot;&gt;Pages utilisateur et organisation&lt;/h2&gt;
+
+&lt;p&gt;Pour activer la génération automatique par GitHub Pages d’un dépôt de compte utilisateur ou organisation, il suffit de respecter la nomenclature  &lt;code class=&quot;highlighter-rouge&quot;&gt;username/username.github.io&lt;/code&gt;. Par exemple ce dépôt s’appelle &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-fr/jekyll-fr.github.io&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;GitHub va utiliser la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; de ces dépôts et publier les pages. Cela fait que nous aurons une branche &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; qui contient le site généré et une branche &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; avec les sources de notre site.&lt;/p&gt;
+
+&lt;h3 id=&quot;configuration-du-dpt&quot;&gt;Configuration du dépôt&lt;/h3&gt;
+
+&lt;p&gt;La préparation du dépôt se résume à créer la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; en ligne de commande :&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git checkout -b source master
+$ git push -u origin source
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Maintenant que vous avez crée la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt;, vous pouvez en faire la branche par &lt;em&gt;défaut&lt;/em&gt; dans GitHub :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/default-branch-github.png&quot; alt=&quot;Paramètrage des branches dans GitHub&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;publication-automatique&quot;&gt;Publication automatique&lt;/h3&gt;
+
+&lt;p&gt;Maintenant que le dépôt est configuré, vous pouvez générer votre site et pousser les fichiers générés sur la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt;. Mais plutôt que de s’embêter à faire ça manuellement, créons un simple tâche &lt;code class=&quot;highlighter-rouge&quot;&gt;rake&lt;/code&gt;.
+Créez (si vous n’en avez pas déjà un) un fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; à la racine de votre site et ajoutez le contenu suivant &lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; :&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/DirtyF/24cb9c96b64173ecd85578f38bcc940d.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;Maintenant vous pouvez simplement lancer la commande &lt;code class=&quot;highlighter-rouge&quot;&gt;rake publish&lt;/code&gt; pour générer et publier votre site sur GitHub Pages.&lt;/p&gt;
+
+&lt;p&gt;Si vous utilisez un nom de domaine personnalisé, vérifiez bien que le fichier CNAME est bien présent dans la branche générée.&lt;/p&gt;
+
+&lt;h2 id=&quot;pages-projet&quot;&gt;Pages projet&lt;/h2&gt;
+
+&lt;p&gt;Les pages projet sont presque pareilles que les pages utilisateur et organisation, à une différence près : la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;gh-pages&lt;/code&gt; est utilisée à la place de la branche &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; pour générer et publier les pages.&lt;/p&gt;
+
+&lt;p&gt;Il n’y a aucune configuration supplémentaire à faire, il faut simplement apporter quelques petites modifications au fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;Rakefile&lt;/code&gt; :&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/DirtyF/2eacfb7ecec18b3b738af1c3c8d1fe5e.js&quot;&gt; &lt;/script&gt;
+
+&lt;p&gt;Vous pouvez maintenant lancer &lt;code class=&quot;highlighter-rouge&quot;&gt;rake site:publish&lt;/code&gt; pour générer votre site et le publier sur GitHub. Jetez également un coup d’œil au &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/rake/site.rake#L55&quot;&gt;fichier Rakefile de Jekyll&lt;/a&gt; pour une implémentation alternation de la tâche &lt;code class=&quot;highlighter-rouge&quot;&gt;rake site:publish&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/octojekyll.png&quot; alt=&quot;octojekyll&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enfin, sachez qu’il existe d’autres solutions d’hébergement comme &lt;a href=&quot;https://pages.gitlab.io/&quot;&gt;GitLab Pages&lt;/a&gt;, &lt;a href=&quot;https://www.netlify.com&quot;&gt;Netlify&lt;/a&gt;, &lt;a href=&quot;http://cloudcannon.com&quot;&gt;Cloudcannon&lt;/a&gt;, &lt;a href=&quot;https://www.siteleaf.com/&quot;&gt;Siteleaf&lt;/a&gt; ou &lt;a href=&quot;https://forestry.io/&quot;&gt;Forestry.io&lt;/a&gt; qui vous permettent d’utiliser les plugins de votre choix, sans avoir recours à ce genre de hack.&lt;/p&gt;
+
+&lt;h3 id=&quot;notes&quot;&gt;Notes&lt;/h3&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;Les tâches utilisées dans ce billet ont été écrites par &lt;a href=&quot;http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html&quot;&gt;Ixti&lt;/a&gt;, le créateur du plugin &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll-assets&lt;/code&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Sun, 18 Sep 2016 13:51:13 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/09/18/utiliser-des-plugins-jekyll-avec-github-pages/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/09/18/utiliser-des-plugins-jekyll-avec-github-pages/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Gérer les images responsive dans Jekyll avec le plugin Cloudinary</title>
+        <description>&lt;p&gt;&lt;em&gt;&lt;a href=&quot;http://cloudinary.com/blog/how_i_used_cloudinary_to_solve_responsive_image_needs_in_my_jekyll_website_and_shared_the_magic_in_a_plugin&quot;&gt;Read original English version of this post on Cloudinary’s blog &lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;J’ai récemment mis à jour &lt;a href=&quot;https://nicolas-hoizey.com&quot;&gt;mon site perso&lt;/a&gt; avec &lt;a href=&quot;https://jekyllrb.com/news/2015/10/26/jekyll-3-0-released/&quot;&gt;la dernière version de Jekyll&lt;/a&gt; et j’en ai profité pour changer quelques outils.&lt;/p&gt;
+
+&lt;p&gt;Les plugins que j’utilisais ne répondaient pas à mes exigences pour les images reponsive, j’ai donc décidé de trouver d’autres moyens de satisfaire ces besoins.&lt;/p&gt;
+
+&lt;p&gt;Pour générer le code HTML des images responsive (dois-je vous vraiment vous rappeler qu’utiliser les &lt;a href=&quot;http://responsiveimages.org/&quot;&gt;images responsive natives&lt;/a&gt; devrait ête un réflexe de nos jours ?), j’ai resté le plugin &lt;a href=&quot;https://github.com/wildlyinaccurate/jekyll-responsive-image&quot;&gt;Jekyll Responsive Image&lt;/a&gt;. Il est vraiment sympa, il vous laisse définir vos propres gabarits de balisage d’image, vous pouvez donc utiliser &lt;code class=&quot;highlighter-rouge&quot;&gt;srcset&lt;/code&gt; ou &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;picture&amp;gt;&lt;/code&gt; selon votre envie. Mais il ne répondait à tous mes besoins :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lors de la première génération d’un site statique Jekyll avec ce plugin vous devez générer toutes les variantes à partir des images originales. J’ai actuellement environ 750 images sur mon blog et cela entraîne des temps de compilation extrêment longs,&lt;/li&gt;
+  &lt;li&gt;Envoyer toutes ces variantes au serveur prend également du temps, car je n’ai pas un accès très rapide chez moi,&lt;/li&gt;
+  &lt;li&gt;Et bien entendu toutes ces images sont servies sur le même serveur que les pages, dans mon cas sur un hébergement mutualisé sympa et bon marché.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Je voulais revenir à un workflow plus simple et plus rapide et qui génère moins de charge côté serveur.&lt;/p&gt;
+
+&lt;p&gt;La plupart des sites web responsive que ma société développe pour ses client utilisent des solutions ad hoc pour les images responsive, mais j’avais connaissance de quelques solutions SaaS d’images responsive. J’ai donc décidé de voir si l’une d’entre elles pouvait répondre à mes besoins.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://cloudinary.com/&quot;&gt;Cloudinary&lt;/a&gt; est une des solutions disponibles qui offre le plus de fonctionnalités &lt;strong&gt;et&lt;/strong&gt; qui peut être utilisée gratuitement si vous avez des besoins légers. Difficile pour les autres solutions de rivaliser avec cette offre…&lt;/p&gt;
+
+&lt;p&gt;Avec un compte gratuit, j’ai pu tester ce que je voulais, essayer différentes fonctionnalités et décider si je continuais ou si j’allais voir ailleurs.&lt;/p&gt;
+
+&lt;p&gt;Les fonctions principales que je cherchais et que fournit Cloudinary sont :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://cloudinary.com/documentation/upload_images#auto_fetching_remote_images&quot;&gt;La possibilité d’utiliser le service comme un proxy&lt;/a&gt;:&lt;/strong&gt; les images originales sont stockées sur mon serveur, mais toutes les images servies à mes visiteurs le sont depuis Cloudinary, générées à la volée à partir des originales. Encore mieux, je n’ai pas besoin d’uploader les images originales - Cloudinary les récupère automatiquement à partir de mes versions publiées en local. Entre d’autres termes, le seul “client” pour mes images d’origine c’est Cloudinary. Du coup, je consomme très peu de bande passante pour mes images chez mon hébergeur.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Recadrage et options de redimensionnement des images :&lt;/strong&gt; actuellement, je ne fais que retailler mes images à partir des originaux en large résolution pour les adapter aux mises en page responsive. Je me penche sérieusement sur la possibilité de faire de la direction artistique avancée à l’aide des &lt;a href=&quot;http://cloudinary.com/blog/introducing_smart_cropping_intelligent_quality_selection_and_automated_responsive_images&quot;&gt;fonctionnalités de recadrage automagiques de Cloudinary&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://cloudinary.com/documentation/image_transformations#automatic_format_selection&quot;&gt;Optimisation du format des images&lt;/a&gt;:&lt;/strong&gt; Si je publie des images JPEG dans mes billets, Cloudinary peut envoyer des images au format WebP aux visiteurs s’il est supporté par leur navigateur. Le mois dernier, deux tiers des images servies par Cloudinary à mes visiteurs étaient au format WebP, que Cloudinary génére et sert pour moi automatiquement. C’est un gain énorme à la fois pour la performance et les forfaits de données de mes visiteurs et également pour mon quota de bande passante chez Cloudinary.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;http://cloudinary.com/documentation/image_transformations#automatic_quality_and_encoding_settings&quot;&gt;Optimisation de la compression d’image&lt;/a&gt;:&lt;/strong&gt; Cloudinary est capable de calculer le meilleur niveau de compression pour réduire le poids de chaque image, sans pour autant dégrader la qualité du visuel.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Persuadé que Cloudinary répondait à toutes mes attentes, il me fallait encore développer un plugin Jekyll qui puisse utliser ces fonctionalités.&lt;/p&gt;
+
+&lt;p&gt;Après réflexion, j’ai décidé de partir avec une  &lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;balise Liquid&lt;/a&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cloudinary&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; qui simplifierait la publication d’image avec Cloudinary et qui était relativement simple à développer. Je me suis inspiré d’autres plugins, j’ai trouvé de l’aide sur StackOverflow quand j’en avais besoin et j’ai fini par publier la premier version du &lt;a href=&quot;https://nhoizey.github.io/jekyll-cloudinary/&quot;&gt;plugin Jekyll Cloudinary&lt;/a&gt; en juillet 2016.&lt;/p&gt;
+
+&lt;p&gt;La syntaxe est assez intuitive :&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% cloudinary &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;preset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; path/to/img.jpg alt=&quot;alt text&quot; caption=&quot;image caption&quot; %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;À partir de cette entrée, le plugin génère le HTML de l’image responsive, en utilisant les attributs &lt;code class=&quot;highlighter-rouge&quot;&gt;srcset&lt;/code&gt; et &lt;code class=&quot;highlighter-rouge&quot;&gt;sizes&lt;/code&gt; pour la balise &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt; tag (voir &lt;a href=&quot;https://jakearchibald.com/2015/anatomy-of-responsive-images/#varying-size-and-density&quot;&gt;la section “varier la taille et la densité” de ce billet&lt;/a&gt; pour comprendre comment fonctionnent ces attributs et &lt;a href=&quot;https://cloudfour.com/thinks/dont-use-picture-most-of-the-time/&quot;&gt;ce billet qui explique pourquoi vous devriez les utiliser plutôt que &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;picture&amp;gt;&lt;/code&gt;, la plupart du temps&lt;/a&gt;).
+L’attribut &lt;code class=&quot;highlighter-rouge&quot;&gt;srcset&lt;/code&gt; et son fallback &lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt; contiennent les URLs Cloudinary qui récupèrent les images originales du billet à la volée et les retaillent en plusieurs tailles alternatives.&lt;/p&gt;
+
+&lt;p&gt;Par exemple, comme indiqué dans &lt;a href=&quot;https://nhoizey.github.io/jekyll-cloudinary/#live-example&quot;&gt;la documentation&lt;/a&gt;, ce code dans un fichier Markdown :&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{% cloudinary logo /assets/logos/cloudinary.png alt=&quot;Cloudinary logo&quot; %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;va générer le code HTML suivant :&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;img&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://res.cloudinary.com/&amp;lt;cloud_name&amp;gt;/image/fetch/c_limit,w_480,q_auto,f_auto/https://&amp;lt;domain&amp;gt;/assets/logos/cloudinary.png&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;srcset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;
+    https://res.cloudinary.com/&amp;lt;cloud_name&amp;gt;/image/fetch/c_limit,w_80,q_auto,f_auto/https://&amp;lt;domain&amp;gt;/assets/logos/cloudinary.png 80w,
+    https://res.cloudinary.com/&amp;lt;cloud_name&amp;gt;/image/fetch/c_limit,w_240,q_auto,f_auto/https://&amp;lt;domain&amp;gt;/assets/logos/cloudinary.png 240w,
+    https://res.cloudinary.com/&amp;lt;cloud_name&amp;gt;/image/fetch/c_limit,w_400,q_auto,f_auto/https://&amp;lt;domain&amp;gt;/assets/logos/cloudinary.png 400w&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;sizes=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;
+    (min-width: 50rem) 13rem,
+    (min-width: 40rem) 25vw,
+    45vw&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;logo&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;alt=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;logo Cloudinary&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;480&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;350&quot;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vous avez entièrement la main sur le nombre d’images générées, leurs résolutions et les attributs &lt;code class=&quot;highlighter-rouge&quot;&gt;sizes&lt;/code&gt; (qui aident le navigateur à décider quelle image télécharger).
+Cela se fait à partir des options de configuration à votre disposition dans votre
+fichier &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;. Voici l’extrait de mon fichier de configuration où je définis les régles pour les logos :&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;cloudinary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;cloud_name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;…&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;logo&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;min_width&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;80&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;max_width&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;400&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;fallback_max_width&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;200&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;steps&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;3&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;sizes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;50rem)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;13rem,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;40rem)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;25vw,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;45vw'&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;never&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;logo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;cloud_name: …&lt;/code&gt; votre ID personnel Cloudinary&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;presets:&lt;/code&gt; englobe la liste des préréglages que vous définissez pour vote site&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;logo:&lt;/code&gt; est le nom d’un des préréglages, que j’utilise dans le tag Liquid avant le nom du fichier image&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;min_width: 80&lt;/code&gt; définit la largeur minimum d’image générée&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;max_width: 400&lt;/code&gt; définit la largeur maximale d’image générée&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fallback_max_width: 200&lt;/code&gt; définit la largeur de l’image de la solution de repli (&lt;code class=&quot;highlighter-rouge&quot;&gt;src&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;steps: 3&lt;/code&gt; définit le nombre d’images à générer&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sizes: '(min-width: 50rem) 13rem, (min-width: 40rem) 25vw, 45vw'&lt;/code&gt; définit l’attribut &lt;code class=&quot;highlighter-rouge&quot;&gt;sizes&lt;/code&gt; de l’image responsive, qui dépend du design et des breakpoints&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;figure: never&lt;/code&gt; empêche la génération d’un bloc &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;figure&amp;gt;&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;figcaption&amp;gt;&lt;/code&gt;  (Je n’en veux généralement pas sur les logos)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;attributes:&lt;/code&gt; englobe la liste d’attributs à toujours ajouter aux éléments &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;figure&amp;gt;&lt;/code&gt; et/ou &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;class: logo&lt;/code&gt; ajoute l’attribut &lt;code class=&quot;highlighter-rouge&quot;&gt;class&lt;/code&gt; ayant pour valeur &lt;code class=&quot;highlighter-rouge&quot;&gt;logo&lt;/code&gt;, que j’utilise dans mon CSS pour m’assurer que le logo ne prenne pas plus d’un quart de la largeur de son conteneur et le fait flotter à droite.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Vous pouvez définir toutes ces régles pour autant de préréglages dont vous aurez besoin.&lt;/p&gt;
+
+&lt;p&gt;Avec ce plugin et mon compte Cloudinary, &lt;strong&gt;le temps de génération de mon site a été réduit de 90% et la capacité de stockage utilisée sur mon serveur de 60%&lt;/strong&gt; et je n’ai plus à me soucier du tout de l’optimisation de mes images. C’est un gain énorme.&lt;/p&gt;
+
+&lt;p&gt;Et après ? Au début, je voulais permettre aux auteurs d’utiliser simplement &lt;a href=&quot;http://kramdown.gettalong.org/syntax.html#images&quot;&gt;la syntaxe Markdown pour les images&lt;/a&gt;, mais je n’y suis pas encore parvenu, malgré &lt;a href=&quot;http://stackoverflow.com/questions/35614552/with-jekyll-3-can-i-transform-a-posts-markdown-before-actual-markdown-parsing&quot;&gt;quelques&lt;/a&gt; &lt;a href=&quot;https://github.com/jekyll/jekyll/issues/5099&quot;&gt;réponses&lt;/a&gt; &lt;a href=&quot;http://stackoverflow.com/questions/38126629/how-is-the-priority-flag-in-jekyll-plugins-supposed-to-work&quot;&gt;valables&lt;/a&gt; à mes questions du principal mainteneur de Jekyll &lt;a href=&quot;https://github.com/parkr&quot;&gt;Parker Moore&lt;/a&gt; lui-même. Il faudra que je creuse les hooks Jekyll à l’avenir.&lt;/p&gt;
+
+&lt;p&gt;Au final, cela a était un bon moyen d’apprendre un peu de Ruby, de comprendre les rouages internes de Jekyll, comment fonctionnent les plugins et comment publier une Gem… J’ai tellement appris en peu de temps grâce à ce petit projet si utile et important à mes yeux.&lt;/p&gt;
+
+&lt;p&gt;Bien entendu, toute aide est la bienvenue pour aider à améliorer le plugin. Il y a déjà &lt;a href=&quot;https://github.com/nhoizey/jekyll-cloudinary/issues&quot;&gt;quelques anomalies et demandes de fonctionnalités ouvertes&lt;/a&gt;. N’hésitez pas à me signaler tout problème ou à partager vos idées, voire même à contribuer via des &lt;a href=&quot;https://github.com/nhoizey/jekyll-cloudinary/pulls&quot;&gt;pull requests&lt;/a&gt; !&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Aug 2016 00:00:00 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/08/31/gestion-images-responsive-avec-jekyll-cloudinary/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/08/31/gestion-images-responsive-avec-jekyll-cloudinary/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Entretien avec Parker Moore de Jekyll</title>
+        <description>&lt;p&gt;Nous vous proposons la traduction d’un entretien de Parker Moore, le mainteneur principal de Jekyll, avec Aaron Autrand, &lt;a href=&quot;https://www.netlify.com/blog/2016/03/11/interview-with-parker-moore-from-jekyll&quot;&gt;publié le 11 mars 2016 sur le blog de la société Netlify&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://cdn.netlify.com/a3dc6515430891d6df896d718dd7e54f6941d647/99084/uploads/parker-moore-jekyll.jpg&quot; alt=&quot;Parker Moore&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Alors que nous constatons une augmentation constante du nombre d’outils permettant de générer des sites statiques à destination des développeurs, profesionnels ou amateurs, aucun d’entre eux n’attire autant l’attention que &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sa popularité n’est pas vraiment surprenante quand on sait que Jekyll a été crée par un des cofondateurs de GitHub et que c’est le moteur qui fait tourner GitHub pages.&lt;/p&gt;
+
+&lt;p&gt;Il y a quelques temps, nous avons pu assister au lancement de Jekyll 3.0, avec la &lt;a href=&quot;https://youtu.be/sPZK8w55cBQ?t=37m58s&quot;&gt;publication en direct du commit final&lt;/a&gt; pendant une présentation de Parker Moore, actuellement en charge de la maintenance de Jekyll, lors du Meetup Static Web à San Francisco. Après sa présentation, Moore a pris quelques minutes pour parler avec nous de Jekyll, de son développement et du future des sites web statiques.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Qu’est ce que vous faites quand vous ne travaillez pas sur Jekyll ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Je suis ingénieur logiciel chez Github, entreprise dans laquelle j’aide au développement du service Github Pages. Mon travail consiste aussi à maintenir Jekyll et à faire grandir la communauté autour du projet.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Peux tu nous dire comment tu as été amené à t’impliquer dans Jekyll et ce qui s’est passé depuis pour aboutir à la mise en ligne de la version 3.0 de Jekyll ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Le parcours était intéressant. J’ai été améné à utiliser Jekyll pour un job d’été à l’université de Cornell. Il s’agissait de la refonte du site cals.cornell.edu, nous voulions réaliser un nouveau site, et ce de manière rapide. Nous voulions garder l’existant et le migrer sur un nouveau système. Nous avions de nouvelles maquettes et de nouveaux contenus. J’avais déjà entendu parler de Jekyll ; je l’avais déjà utilisé. J’ai réussi à convaincre mon supérieur, je ne sais pas comment j’ai fait, mais il a accepté. Pour moi, Jekyll correspondait exactement à la demande, je devais juste servir du contenu. Au final, nous avons même utilisé Jekyll pour servir des pages PHP avec un serveur LAMP qui permet d‘envoyer des Emails ou de générer des PDF. J‘ai donc utilisé un peu Jekyll à cette période et ça m’a beaucoup plu.&lt;/p&gt;
+
+&lt;p&gt;J’ai regardé les bugs majeurs, il y en avait tellement : plus de 800 sur le dépôt, ce qui est énorme. Beaucoup trop pour un projet Open Source majeur, selon moi. J’ai perçu un besoin, j’ai pensé que j’avais suffisament de temps libre - même si ce n’était pas le cas -  pour aider la communauté sur ces corrections. Peu avant, j’étais parti travailler en Allemagne pour une société du nom de 6 Wunderkinder — l’éditeur de Wunderlist – j’ai bombardé Tom (NdT: Prester-Werner le créateur de Jekyll) d’emails, sans cesse. Au final, j’ai publié une lettre ouverte sur mon blog, ce qui avec le recul était assez fou et immature, mais qui a eu les effets escomptés. Peu de temps après, Tom m’a répondu : “Il faut qu’on parle, tu as l’air vraiment intéressé, qu’en dis-tu ?”&lt;/p&gt;
+
+&lt;p&gt;Je venais juste d’avoir un échange avec Brandon Mathis, qui travaille sur Octopress, et il m’a ajouté comme contributeur au projet. Et ainsi j’ai pu dire à Tom : “regarde, je suis aussi contributeur d‘Octopress, je connais les sites statiques”. Brandon a du approuver ma canditature j’imagine. Quelques semaine plus tard alors que j’étais en visite chez ma sœur à San Fransisco, j’ai rencontré Tom au siège de GitHub pour parler de Jekyll pendant une heure. Il m’a donné les accès, j’ai corrigé quelques bugs et j’ai commencé à travailler sur Jekyll 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tu as débuté avec la 0.12.1 ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Effectivement, je l’utilisais, et il y avait tant de choses qui ne fonctionnaient pas. Je savais que je pouvais corriger tout ça ; je connaissais Ruby, j’avais fait un peu de Ruby on Rails avant, et j’avais beaucoup appris sur le développement web à cette occasion.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Quelle fut ta première expérience de programmation ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;À la Rochester Institute of Technology, je m’étais rendu avec des camarades d’écoles à des journées de codes pour élèves de collège. J’avais 13 ans. Il y a eu un cours de 30 minutes sur HTML. J’ai adoré. Je n’arrêtais pas d’en écrire, encore et encore. Je changeais la couleur de fond avec un attribut… je faisais tous ces trucs bêtes et ordinaires.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Quel fut ta première rencontre avec les générateurs de site statique modernes ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Je ne me souviens pas plus loin que de mon expérience avec Jekyll à Cornell. Je savais que les générateurs de site statique marcheraient car j’avais codé du HTML, de la CSS et du JavaScript et je sais ce qu’ils font. J’ai donc décidé de partir de ça, j’ai regardé plusieurs outils et Jekyll était celui qui avait le plus d’étoiles sur Github et avait l’air d’être le plus populaire. Les gens écrivaient dessus et l’utilisaient. GitHub Pages existait déjà. Du coup j’ai emprunté cette direction.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;C’était donc une question de masse critique ? Il y avait pas mal de gens donc tu savais que c’était vivant et actif.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tu sors dans les endroits branchés en général non ? Je me suis dit qu’il y aurait des contributeurs. Un projet open-source a besoin de gens plus que de tout autre chose, parce qu’il y a besoin de code.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;La pire chose à faire sur un forum est de poser une question et de retourner voir tous les jours s’il y a une réponse, mais toujours rien.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Personne n’a répondu !&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Que souhaites-tu aux générateurs de site statique ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Qu’ils soient mieux compris. Je les comprend et tu les comprends, mais je rêve d’un monde où ce serait le cas pour tout le monde… et j’imagine que cela arrivera, car   l’informatique s’apprend de plus en plus tôt, la création de sites web est un bon moyen pour commencer à apprendre le code. Mon plus grand souhait c’est qu’ils soient mieux compris de tous et perçus comme une vraie solution, honnête et prête pour la production, pour les sociétés intéressées dans la réalisation de sites web.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Comment est-il possible de faire cela ?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Un truc dont j’ai parlé avec Christian et Matt, les fondateurs de Netlify (NdT : Service d’hébergement et de déploiement de sites statiques) ; c’est que les sites statiques, les générateurs de sites statiques, les générateurs statiques, le site statique, tout ça a l’air plutôt ennuyeux, ça sonne très technique…&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Le dynamique a l’air bien plus intéressant !&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;C’est ça ! Drupal et Wordpress sont basés sur le principe de “l’installation en 1 clic”. Sur wordpress.com, il est possible d’avoir un site gratuitement avec un thème en place. C’est toutes ces petites barrières qui ne sont pas grand chose mais qui font la différence. Donc que je pense que l’accessibilité c’est important. Des entreprises comme Netlify ou CloudCannon y travaillent. Plusieurs sociétés font en sorte qu’il soit plus simple d’apprendre à construire des sites statiques. Je pense qu’il faut faire évoluer le dialogue et notre vocabulaire, pour ne pas intimider ceux qui sont en train d’apprendre ce que sont les générateurs de sites statiques. Qu’est-ce que ça veut dire un site statique ? C’est un terme qui parle de lui même site statique. Mais vous avez à apprendre la différence entre le statique et le dynamique… qui n’est pas un terme que les gens emploient tous les jours. Quelle est la dernière fois où vous avez utilisez le mot statique en dehors du cadre professionnel ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Oui statique ça fait un peu péjoratif dans ce contexte&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Oui, il faut véhiculer une vision claire, accessible et s’outiller d’un meilleur lexique. Quelque chose qui explique tout ça très bien, sans utiliser de mots qui font peur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;En tant que mainteneur de Jekyll, qu’aimerais-tu dire, communiquer à ceux qui s’intéressent aux technos autour du web statique moderne ? La tribune est à toi.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Si j’avais une tribune, je dirais “N’abandonnez pas”. Prenez  vous la tête dessus un petit moment. Si cela ne marche pas au bout d’une heure, d’un jour, allez demander de l’aide. Je dirai que ne pas abandonner et se prendre la tête sur quelque chose est la meilleure façon d’apprendre, d’affronter les problèmes. De manière générale, ma génération n’est vraiment pas douée quand il s’agit de perséverer…que ce soit travailler quelque part plus d’un an ou affronter une grande difficulté pendant plus de 15 minutes. C’est comme si tout était éphémère de nos jours, contrairement à ce que j’ai pu apprendre à travers les livres d’histoires ou les histoires que mes parents et mes grand-parents m’ont raconté. Ne pas abandonner, c’est avoir confiance dans la technologie du web statique, c’est avoir confiance dans les personnes qui développent tout ça, qui font des sites web et qui apprennent de ça, c’est avoir confiance dans notre futur.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Et lorsqu’on n’abandonne pas, on a plus de chance de faire partie de la solution, car on s’est investi dedans.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Oui, c’est exactement ça.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 19 Apr 2016 00:00:00 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/04/19/entretien-avec-parker-moore/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/04/19/entretien-avec-parker-moore/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>JekyllConf 2016</title>
+        <description>&lt;p&gt;&lt;a href=&quot;http://jekyllconf.com/&quot;&gt;JekyllConf&lt;/a&gt; est la première conférence entièrement consacrée à Jekyll. C’est une conférence en ligne, gratuite et ouverte à tous, preuve de la volonté de partage qui anime la communauté. Elle aura lieu le samedi 7 mai prochain à partir de 19h heure française, les vidéos seront mises en ligne peu après.&lt;/p&gt;
+
+&lt;p&gt;La première édition avait rassemblé Tom Preston-Werner, Parker Moore, Brandon Mathis ou Ben Balter, respectivement créateurs et mainteneurs de Jekyll, OctoPress et Github Pages ; outre une vision des futures améliorations possibles pour les générateurs de sites statiques, il y avait eu quelques retours d’expérience plus pratiques comme la création de &lt;em&gt;styleguide&lt;/em&gt;. Nous ne pouvons que vous inviter à aller regarder les &lt;a href=&quot;http://jekyllconf.com/2015/&quot;&gt;vidéos de l’édition de 2015&lt;/a&gt; si vous vous intéressez à Jekyll et aux gestionnaires de site statique.&lt;/p&gt;
+
+&lt;p&gt;Le &lt;a href=&quot;http://jekyllconf.com/&quot;&gt;programme&lt;/a&gt; de cette deuxième édition s’annonce tout aussi intéressant et met encore plus l’accent sur des retours d’expérience ainsi que différents cas d’utilisation avancée de Jekyll.&lt;/p&gt;
+
+&lt;p&gt;Cette édition permettra de constater comment Jekyll peut répondre à différentes problématiques, que ce soit générer de la documentation, tester ses CSS, prototyper ses sites web, travailler sa stratégie de contenu voire faire des choses beaucoup moins conventionnelles comme c’est le cas chez Mapbox.&lt;/p&gt;
+
+&lt;p&gt;Les témoignages de Stack Overflow et quelques unes des meilleures agences seront surement riches en enseignements. CloudCannon nous montrera comment les utilisateurs finaux peuvent éditer des sites sous Jekyll.&lt;/p&gt;
+
+&lt;p&gt;La conférence compte aussi plusieurs interventions sur des aspects plus techniques comme les différentes manières de déployer Jekyll : sur Amazon, déploiement continu avec Docker… d’implémenter une solution de recherche comme Algolia ou Elasticsearch ou comment gérer les images responsive.&lt;/p&gt;
+
+&lt;p&gt;Cette deuxième édition s’annonce donc prometteuse, nous ne manquerons pas de vous faire un petit compte-rendu, promis.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 14 Apr 2016 00:00:00 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/04/14/jekyllconf-2016/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/04/14/jekyllconf-2016/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Lancement de la communauté Jekyll France</title>
+        <description>&lt;p&gt;C’est avec émotion que nous avons le plaisir de vous annoncer le lancement d’un site relayant les actualités de la communauté Jekyll en Français.&lt;/p&gt;
+
+&lt;h2 id=&quot;pourquoi-ce-site-&quot;&gt;Pourquoi ce site ?&lt;/h2&gt;
+
+&lt;p&gt;Nous observons actuellement un vrai engouement pour l’utilisation des gestionnaires de site statique. Du fait de son utilisation par &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github Pages&lt;/a&gt;, &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; est le système le plus populaire.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jekyll est un générateur de sites statiques écrit en Ruby… qui vous permet de développer des sites basés sur des templates dynamiques (codés avec Liquid) et des fichiers de contenus (YAML / Markdown / HTML / JSON / CSV). Jekyll n’utilise pas de base de données. Sur la base de ces fichiers, Jekyll va générer un site entièrement statique que vous pourrez ensuite déployer sur n’importe quel serveur web ou sur Github Pages.
+– &lt;cite&gt;&lt;a href=&quot;https://github.com/jeromecoupe/iad_jekyll_introduction/blob/master/jekyll_introduction_fr.md#introduction-à-jekyll&quot;&gt;Introduction à Jekyll&lt;/a&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On observe un bouillonnement aussi bien de la communauté qui a lancé de nombreux chantiers en parallèle que de nouveaux acteurs du monde de l’édition qui utilisent Jekyll pour ses publications.&lt;/p&gt;
+
+&lt;p&gt;Jekyll est rapide à prendre en main, cependant en fonction de besoins particuliers il est parfois intéressant d’avoir accès à des exemples de codes permettant de mettre en place le comportement désiré.&lt;/p&gt;
+
+&lt;p&gt;Nous aimerions relayer et aggréger en Français ce qui se passe à divers endroits de la toile autour de Jekyll.&lt;/p&gt;
+
+&lt;h2 id=&quot;son-actualit&quot;&gt;Son actualité&lt;/h2&gt;
+
+&lt;p&gt;Les news, les conférences et appels à orateurs… tout ce qui peut toucher de près ou de loin la communauté. L’objectif est de relayer de l’information.&lt;/p&gt;
+
+&lt;h2 id=&quot;ses-rfrences&quot;&gt;Ses références&lt;/h2&gt;
+
+&lt;p&gt;Il existe des sites ou des articles qui font références pour l’installation, la mise en production, l’optimisation du code, la gestion du contenu… il s’agit de lister les liens que nous estimons essentiels.&lt;/p&gt;
+
+&lt;h2 id=&quot;ses-exemples-de-code&quot;&gt;Ses exemples de code&lt;/h2&gt;
+
+&lt;p&gt;Pour mettre en forme un menu, des catégories ou des collections, des exemples de code sont présents sur le web, pourquoi ne simplement pas présenter un cas pratique et donner un ou plusieurs exemples de code que l’on peut utiliser.&lt;/p&gt;
+
+&lt;h2 id=&quot;ses-limites&quot;&gt;Ses limites&lt;/h2&gt;
+
+&lt;p&gt;Jekyll c’est pratique, mais Jekyll n’a pas vocation à tout faire. Parce qu’il faut savoir utiliser les outils adaptés, nous parlerons des avantages que peuvent avoir d’autres gestionnaires de sites statiques.&lt;/p&gt;
+
+&lt;p&gt;Nous espérons ainsi pouvoir fédérer une communauté d’utilisateurs, qui partagent leurs problématiques et leurs solutions, afin que l’utilisation de Jekyll et des gestionnaires de site statique soit plus simple pour tous.&lt;/p&gt;
+
+&lt;p&gt;Toute contribution est la bienvenue, nous sommes &lt;a href=&quot;https://github.com/jekyll-fr/&quot;&gt;Jekyll-fr sur Github&lt;/a&gt;, &lt;a href=&quot;//twitter.com/jamstatic_fr&quot;&gt;jamstatic_fr sur Twitter&lt;/a&gt; et vous pouvez &lt;a href=&quot;https://jekyll-fr.herokuapp.com/&quot;&gt;vous connecter sur notre canal de discussion Slack&lt;/a&gt;, si vous souhaitez vous joindre à nous.&lt;/p&gt;
+
+&lt;p&gt;Bon Jekyll !&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 01 Apr 2016 00:00:00 +0200</pubDate>
+        <link>http://jekyll-fr.org/2016/04/01/lancement/</link>
+        <guid isPermaLink="true">http://jekyll-fr.org/2016/04/01/lancement/</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com/" data-proofer-ignore>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic,900">
+  <link rel="canonical" href="http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/">
+  <link rel="alternate" type="application/atom+xml" title="Jekyll-fr" href="/feed.xml">
+  <!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Créer un thème pour Jekyll - Jekyll-fr</title>
+<meta property="og:title" content="Créer un thème pour Jekyll">
+<meta name="description" content="Jekyll permet de publier des thèmes sous forme de gem, afin de faciliter l’installation et les mises à jour.">
+<meta property="og:description" content="Jekyll permet de publier des thèmes sous forme de gem, afin de faciliter l’installation et les mises à jour.">
+<link rel="canonical" href="http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/">
+<meta property="og:url" content="http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/">
+<meta property="og:site_name" content="Jekyll-fr">
+<meta property="og:image" content="http://jekyll-fr.org/assets/images/logo-2x.png">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2016-10-29T15:18:59+02:00">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@jamstatic_fr">
+<meta name="twitter:creator" content="@DirtyF">
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "BlogPosting",
+"headline": "Créer un thème pour Jekyll",
+"image": "http://jekyll-fr.org/assets/images/logo-2x.png",
+"datePublished": "2016-10-29T15:18:59+02:00",
+"description": "Jekyll permet de publier des thèmes sous forme de gem, afin de faciliter l’installation et les mises à jour.",
+"url": "http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/favicons/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/assets/favicons/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/favicons/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/assets/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/assets/favicons/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/assets/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="/assets/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/assets/favicons/android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="/assets/favicons/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/assets/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/assets/favicons/manifest.json">
+<link rel="mask-icon" href="/assets/favicons/safari-pinned-tab.svg" color="#3f1f1f">
+<link rel="shortcut icon" href="/assets/favicons/favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/assets/favicons/mstile-144x144.png">
+<meta name="msapplication-config" content="/assets/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+
+  
+    <script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-75833986-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+
+  
+</head>
+
+  <body>
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/"><span><img src="/assets/images/logo-2x.png" alt="Jekyll-fr"></span></a>
+
+    <nav class="site-nav">
+      <div class="trigger">
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/">Communauté Jekyll francophone</a>
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Créer un thème pour Jekyll</h1>
+    
+    <p class="post-meta"><time datetime="2016-10-29T15:18:59+02:00" itemprop="datePublished">29
+
+octobre
+  
+ 2016
+</time>
+      
+       • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">
+            <a class="post-author" rel="author" href="https://github.com/DirtyF"><img class="avatar avatar-small" src="https://avatars2.githubusercontent.com/DirtyF?v=3&amp;s=28" alt="DirtyF" srcset="https://avatars2.githubusercontent.com/DirtyF?v=3&amp;s=28 1x, https://avatars2.githubusercontent.com/DirtyF?v=3&amp;s=56 2x, https://avatars2.githubusercontent.com/DirtyF?v=3&amp;s=84 3x, https://avatars2.githubusercontent.com/DirtyF?v=3&amp;s=112 4x" width="28" height="28" data-proofer-ignore="true">Frank Taillandier</a>
+          </span>
+        </span>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Depuis la version 3.2, les webdesigners ont la possibilité de créer des thèmes pour Jekyll. Le support des thèmes sous forme de gem est encore récent mais les premiers thèmes commencent à arriver. Nous allons voir dans cet article que l’opération est assez triviale si vous êtes déjà familiarisé avec Jekyll et Git. Packager un thème se fait en quelques minutes grâce à l’utilisation de <code class="highlighter-rouge">bundler</code>.
+Voyons ensemble à quoi ressemble le workflow de création de thème pour Jekyll.</p>
+
+<h2 id="pr-requis">Pré-requis</h2>
+
+<p>Nous allons supposer que vous connaissez déjà Jekyll, que vous savez créer des modèles de pages, si ce n’est pas le cas, commencez par lire <a href="http://jekyllrb.com/docs/templates/">la documentation officielle,</a> vous verrez c’est très accessible, c’est du HTML auquel on va ajouter un peu de <a href="http://shopify.github.io/liquid/">Liquid</a>, le langage de templating conçu pour les concepteurs de thèmes Shopify, pour accéder à nos données.</p>
+
+<p>Nous ne nous étendrons donc pas pas sur cette partie, qui consiste à préparer vos différents modèles de pages, ce sont les conventions par défaut de Jekyll qui s’appliquent : les feuilles de styles sont stockées dans le dossier <code class="highlighter-rouge">_sass</code>, les modèles de pages dans le dossier <code class="highlighter-rouge">_layouts</code>, les composants réutilisables dans <code class="highlighter-rouge">_includes</code>. Enfin tous les assets (CSS, JS, images, fonts) sont regroupés dans un dossier <code class="highlighter-rouge">assets</code> (et non <code class="highlighter-rouge">_assets</code> pour éviter les conflits avec le plugin <code class="highlighter-rouge">jekyll-assets</code>).</p>
+
+<p>On notera que pour le moment par défaut, seuls ces dossiers seront fournis par le thème, nous verrons comment y ajouter des contenus et des exemples un peu plus bas.</p>
+
+<p>Les thèmes seront téléchargés sous forme de gem, vous devez donc avoir installé <a href="http://bundler.io/">bundler</a> avec la commande <code class="highlighter-rouge">gem install bundler</code>, ce qui est généralement le cas puisque Jekyll encourage son utilisation pour la gestion des dépendances. Enfin, il vous faut <a href="https://rubygems.org/sign_up">créer un compte sur Rubygems</a> pour publier votre thème, ça ne vous prendra que quelques secondes si vous avez déjà un compte GitHub.</p>
+
+<h2 id="prparer-son-thme">Préparer son thème</h2>
+
+<p>Vous avez donc un site statique sous Jekyll et vous souhaitez le partager avec la communauté sous forme de thème. Il y a deux façons de faire, selon vos préférences. L’une d’elle consiste à utiliser la commande <code class="highlighter-rouge">new-theme</code> pour générer une structure de base dans laquelle vous allez pouvoir ajouter vos fichiers :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll new-theme mon-super-theme
+</code></pre>
+</div>
+
+<p>Cette commande va créer un dossier dans le répertoire courant, qui portera le même nom que celui que vous avez fourni en argument, étonnant non ?</p>
+
+<p>Ce dossier comprend tous les dossiers évoqués plus haut : <code class="highlighter-rouge">_includes</code>, <code class="highlighter-rouge">_layouts</code>, <code class="highlighter-rouge">_sass</code> et <code class="highlighter-rouge">assets</code> ainsi qu’un fichier <code class="highlighter-rouge">Gemfile</code> et un fichier <code class="highlighter-rouge">mon-super-theme.gempsec</code> qui contient les informations sur votre thème.</p>
+
+<p>Vous pouvez maintenant recopier les fichiers de votre thème dans cette structure d’exemple.</p>
+
+<p>L’autre manière de faire, c’est de partir de votre site fonctionnel et d’adapter sa structure de manière à vous retrouver avec quelque chose qui ressemble à ça :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>├── .gitignore
+├── Gemfile
+├── LICENSE.md
+├── README.md
+├── _includes
+│   └── head.html
+│   └── ...
+├── _layouts
+│   ├── default.html
+│   ├── home.html
+│   ├── page.html
+│   └── post.html
+│   └── ...
+├── _sass
+│   ├── _base.scss
+│   ├── _variables.scss
+│   ├── ...
+├── assets
+│   ├── favicons
+│   ├── fonts
+│   └── images
+│   └── js
+│   └── css
+├── demo
+│   ├── 404.html
+│   ├── Gemfile
+│   ├── _config.yml
+│   ├── _posts
+│   │   ├── 2016-10-20-presentation-de-jekyll.md
+│   │   ├── 2016-01-02-exemple-de-contenu.md
+│   │   └── 2016-01-03-introduction.md
+│   │   └── ...
+├── mon-super-theme.gemspec
+└── screenshot.png
+</code></pre>
+</div>
+
+<p>Parmi les différences avec un site Jekyll classique, on remarque la présence d’un fichier <code class="highlighter-rouge">Gemfile</code> un peu particulier, d’un fichier <code class="highlighter-rouge">gemspec</code> pour la spécification de la gem, d’un fichier LICENSE (MIT par défaut), d’un fichier <code class="highlighter-rouge">README.md</code>, d’une capture d’écran et d’un dossier <code class="highlighter-rouge">demo</code> (ou <code class="highlighter-rouge">example</code>, c’est selon).</p>
+
+<p>Si on regarde le contenu du fichier <code class="highlighter-rouge">Gemfile</code> d’une gem, il est différent de ceux que vous avez l’habitude d’utiliser. Il fait simplement référence au fichier de spécification de la gem :</p>
+
+<div class="language-ruby highlighter-rouge">
+<pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+<span class="n">gemspec</span>
+</code></pre>
+</div>
+
+<p>En effet, c’est le fichier <code class="highlighter-rouge">gemspec</code> qui va contenir toutes les infos sur notre thème : le numéro de version, sa description, ses dépendances, etc. Pour savoir tout ce que peut contenir ce type de fichier, je vous invite à consulter la <a href="http://guides.rubygems.org/specification-reference/">documentation de référence des spécifications d’une gem</a>.</p>
+
+<p>Lorsque vous utilisez la commande <code class="highlighter-rouge">new-theme</code> de Jekyll, par défaut, le fichier de spécification de votre gem ressemble à ça :</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code># coding: utf-8
+
+Gem::Specification.new do |spec|
+  spec.name          = "mon-super-theme"
+  spec.version       = "0.1.0"
+  spec.authors       = ["Frank Taillandier"]
+  spec.email         = ["frank@taillandier.me"]
+
+  spec.summary       = %q{TODO : Une courte description de votre thème, requise par Rubygems.}
+  spec.homepage      = "TODO : Indiquez ici l'adresse du site de votre gem ou l'URL publique de son dépôt"
+  spec.license       = "MIT"
+
+  spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|_layouts|_includes|_sass|LICENSE|README)}i) }
+
+  spec.add_development_dependency "jekyll", "~&gt; 3.3"
+  spec.add_development_dependency "bundler", "~&gt; 1.12"
+  spec.add_development_dependency "rake", "~&gt; 10.0"
+end
+</code></pre>
+</div>
+
+<p>Outre les méta-données à renseigner, il est intéressant de noter qu’une expression régulière basée sur une commande Git liste les fichiers à inclure dans la gem, cela implique donc que vos fichiers soient versionnés avec Git. Le minimum étant d’avoir initialisé votre dépôt, d’avoir ajouté tous les fichiers qui vont bien et d’avoir enregistré le tout : <code class="highlighter-rouge">git init &amp;&amp; git add . &amp;&amp; git commit -m "Initial commit"</code>.</p>
+
+<p>On peut voir aussi à la fin du fichier que la version 3.3 ou supérieure de Jekyll est requise, en effet avant cette version, le dossier <code class="highlighter-rouge">assets</code> n’était pas géré et le support initial des thèmes n’est arrivé qu’avec la version 3.2.</p>
+
+<p>On constate aussi que <code class="highlighter-rouge">bundler</code> est déclaré en tant que dépendance pour le développement, ainsi que <code class="highlighter-rouge">rake</code>, souvent utilisé pour ajouter des tests ou des tâches automatisées.</p>
+
+<p>Vous pouvez très bien vouloir ajouter d’autres dépendances lors de l’exécution, si vous souhaitez utiliser des plugins dans votre thème. Dans notre exemple, nous voulons ajouter la gestion d’un flux RSS, la génération d’un sitemap et des méta-données pour le SEO.</p>
+
+<p>Nous ajoutons donc les dépendances ainsi que les version minimales requises, comme nous le ferions dans un fichier <code class="highlighter-rouge">Gemfile</code> à l’aide de <a href="http://guides.rubygems.org/specification-reference/#add_runtime_dependency"><code class="highlighter-rouge">spec.add_runtime_dependency</code></a> :</p>
+
+<div class="language-ruby highlighter-rouge">
+<pre class="highlight"><code><span class="n">spec</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s2">"jekyll-feed"</span><span class="p">,</span> <span class="s2">"~&gt; 0.8"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s2">"jekyll-sitemap"</span><span class="p">,</span> <span class="s2">"~&gt; 0.12"</span>
+<span class="n">spec</span><span class="p">.</span><span class="nf">add_runtime_dependency</span> <span class="s2">"jekyll-seo-tag"</span><span class="p">,</span> <span class="s2">"~&gt; 2.0"</span>
+</code></pre>
+</div>
+
+<p>Une fois que votre fichier de spécification est complété, vous allez pouvoir tester votre thème.</p>
+
+<h2 id="tester-son-thme">Tester son thème</h2>
+
+<p>Commencez par lancer <code class="highlighter-rouge">bundle install</code> pour installer les dépendances mentionnées dans le fichier <code class="highlighter-rouge">gemspec</code>.</p>
+
+<h3 id="fournir-des-exemples-de-contenu">Fournir des exemples de contenu</h3>
+
+<p>Comme nous l’avons dit plus haut, pour le moment les thèmes sont livrés sans contenu et ne contiennent que les modèles et les assets. <strong>Lors d’une mise à jour de thème, tous ces fichiers seront écrasés</strong>, c’est le principal intérêt d’utiliser une gem pour le designer ou l’utilisateur, mais à aucun moment vous ne souhaitez écraser les contenus existants.</p>
+
+<p>Cependant, même si la gem ne contient pas de contenus, rien ne vous empêche d’en ajouter dans le dépôt de votre thème pour fournir un exemple de thème entièrement fonctionnel à vos utilisateurs.</p>
+
+<p>Afin de ne pas mélanger les fichiers d’exemple avec ceux de votre thème, il est donc conseillé de créer un dossier <code class="highlighter-rouge">demo</code> (ou <code class="highlighter-rouge">example</code> ou ce que vous voulez) et d’y stocker des contenus destinés à présenter aux utilisateurs le rendu de votre thème.</p>
+
+<p>En plus des fichiers générés par la commande <code class="highlighter-rouge">new-theme</code>, nous ajouterons dans ce dossier <code class="highlighter-rouge">demo</code> tout ce qu’il faut pour faire tourner un site sous Jekyll :  un fichier <code class="highlighter-rouge">_config.yml</code>,  un fichier <code class="highlighter-rouge">Gemfile</code> ainsi que des pages et des posts bien entendu. Vous pouvez également ajouter des exemples de données dans le dossier <code class="highlighter-rouge">_data</code> voire des collections, comme vous le feriez dans n’importe quel site.</p>
+
+<p>Le fichier <code class="highlighter-rouge">demo/Gemfile</code> ressemble à quelques détails près à celui que vous utiliseriez pour n’importe quel site :</p>
+
+<div class="language-ruby highlighter-rouge">
+<pre class="highlight"><code><span class="n">source</span> <span class="s2">"https://rubygems.org"</span>
+
+<span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.3"</span>
+<span class="n">gem</span> <span class="s2">"mon-super-theme"</span><span class="p">,</span> <span class="ss">path: </span><span class="s2">"../"</span>
+
+<span class="n">group</span> <span class="ss">:jekyll_plugins</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-sitemap"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-seo-tag"</span>
+  <span class="n">gem</span> <span class="s2">"jekyll-feed"</span>
+<span class="k">end</span>
+</code></pre>
+</div>
+
+<p>Nous voyons qu’il fait référence à la gem de notre thème, mais comme pour le moment nous n’avons pas encore publié notre thème sous forme de gem, nous nous contentons de faire référence au dossier parent, qui contient les fichiers de notre thème. Cette notation est bien pratique pour tester votre thème en local. Une fois votre gem publiée, vous pourrez choisir de supprimer paramètre path de votre gem, pour que bundler aille télécharger la dernière version sur Rubygems.
+Nous listons également les plugins utilisés dans notre thème.</p>
+
+<p>Maintenant, pour que Jekyll utilise notre thème, nous allons devoir le lui indiquer dans le fichier <code class="highlighter-rouge">demo/_config.yml</code> en ajoutant la ligne :</p>
+
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="s">theme</span><span class="pi">:</span> <span class="s">mon-super-theme</span>
+</code></pre>
+</div>
+
+<p>Là encore, le nom utilisé doit être le même que celui de votre fichier <code class="highlighter-rouge">gemspec</code>. Nous indiquons également dans ce fichier de configuration que nous utilisons les plugins suivants :</p>
+
+<div class="language-yaml highlighter-rouge">
+<pre class="highlight"><code><span class="s">gems</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">jekyll-feed</span>
+  <span class="pi">-</span> <span class="s">jekyll-sitemap</span>
+  <span class="pi">-</span> <span class="s">jekyll-seo-tag</span>
+</code></pre>
+</div>
+
+<p>Nous pouvons maintenant tester notre thème en exécutant la commande <code class="highlighter-rouge">bundle exec jekyll serve --source demo</code> depuis le répertoire racine ou <code class="highlighter-rouge">cd demo &amp;&amp; bundle exec jekyll serve</code>, c’est du pareil au même. N’oubliez pas d’ajouter le répertoire de destination - <code class="highlighter-rouge">_site</code> par défaut - à votre fichier <code class="highlighter-rouge">.gitignore</code>.</p>
+
+<p>Vérifiez le rendu sur différents navigateurs et appareils, aidez vous d’<a href="https://github.com/gjtorikian/html-proofer">html-proofer</a> si vous souhaitez vous assurer que tous les liens internes fonctionnent :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>bundle <span class="nb">exec </span>htmlproofer ./demo/_site --disable-external
+</code></pre>
+</div>
+
+<p>Vous êtes satisfait de la première version de votre thème ? Parfait ! Veillez maintenant à bien renseigner le fichier <code class="highlighter-rouge">README.md</code> pour expliquer comment installer et utiliser votre thème, c’est toujours agréable d’avoir une bonne documentation à sa disposition.</p>
+
+<p>Afin de permettre aux utilisateurs d’avoir un aperçu de votre thème, il est également recommandé d’ajouter une capture d’écran nommée <code class="highlighter-rouge">screenshot.png</code> à la racine de votre dépôt et de l’insérer dans votre fichier <code class="highlighter-rouge">README.md</code>.</p>
+
+<h3 id="packager-son-thme">Packager son thème</h3>
+
+<p>Une fois que votre thème est fonctionnel, documenté, vous êtes parés pour la publication. Cette étape est déjà <a href="https://jekyllrb.com/docs/themes/#publishing-your-theme">documentée sur le site de Jekyll</a>, nous nous contenterons simplement ici de rappeler qu’elle se fait en deux temps.</p>
+
+<p>La première commande va créer la gem à proprement parlée à partir du fichier de spécification :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>gem build mon-super-theme.gemspec
+  Successfully built RubyGem
+  Name: mon-super-theme
+  Version: 0.0.1
+  File: mon-super-theme-0.0.1.gem
+</code></pre>
+</div>
+
+<p>Comme il est inutile de versionner la gem générée (mais cela ne vous dispense pas d’utiliser les tags git pour vous rappeler du moment où vous l’avez générée), pensez donc à ajouter la ligne suivante dans votre fichier <code class="highlighter-rouge">.gitignore</code> :</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight"><code>*.gem
+</code></pre>
+</div>
+
+<p>Vous pouvez en profiter pour vérifier que l’installation de votre gem se déroule sans encombres :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>gem install mon-super-theme-0.0.1.gem
+Successfully installed mon-super-theme-0.0.1
+1 gem installed
+</code></pre>
+</div>
+
+<p>Si tout est OK, il ne vous reste maintenant plus qu’à publier votre thème sur <a href="https://rubygems.org/">Rubygems</a> :</p>
+
+<div class="language-shell highlighter-rouge">
+<pre class="highlight"><code>gem push mon-super-theme-0.0.1.gem
+Pushing gem to https://rubygems.org...
+</code></pre>
+</div>
+
+<p>Et voilà ! Votre thème peut maintenant être utilisé avec Jekyll. Il n’existe pas encore de site officiel qui répertorie tous les thèmes installables via des gems pour Jekyll, c’est donc à vous de communiquer sur la disponibilité de votre thème, par exemple sur <a href="https://talk.jekyllrb.com/t/gem-based-themes/3089/">le forum de Jekyll</a>, sur Twitter avec le hashtag <code class="highlighter-rouge">#jekyllrb</code> ou en commentaire de ce billet :).</p>
+
+<p>Si vous cherchez des références, vous pouvez toujours prendre exemple sur des structures de thèmes accessibles sur Github, notamment :</p>
+
+<ul>
+  <li>
+<a href="https://github.com/jekyll/minima">Minima</a>, le thème par défaut de Jekyll, idéal pour se familiariser avec la structure que nous venons de voir,</li>
+  <li>
+<a href="https://github.com/daviddarnes/alembic/">Alembic</a> un bon point de départ un plus complet proposé par David Darnes</li>
+  <li>
+<a href="https://github.com/mmistakes/minimal-mistakes/">Minimal mistakes</a>, le thème très complet de Michael Rose, qui utilise des collections et tout un tas d’autres fonctionnalités plus avancées de Jekyll.</li>
+</ul>
+
+<p>Voilà, maintenant c’est à vous de jouer, faites de beaux thèmes pour Jekyll !</p>
+
+
+    <footer>
+      
+        <div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+  this.page.url = 'http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/';
+  this.page.identifier = 'http://jekyll-fr.org/2016/10/29/creer-un-theme-pour-jekyll/';
+  this.page.title = 'Créer un thème pour Jekyll';
+};
+// DON'T EDIT BELOW THIS LINE
+(function() {
+var d = document, s = d.createElement('script');
+s.src = '//jekyllfr.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+
+      
+      <h2>Améliorez cet article</h2>
+      <p><a href="https://github.com/jekyll-fr/jekyll-fr.github.io/edit/source/_posts/2016-10-29-creer-un-theme-pour-jekyll.md">Éditez le contenu</a>.</p>
+    </footer>
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+    <div class="wrapper">
+
+        <div class="footer-col-wrapper">
+            <div class="footer-col footer-col-1">
+                <ul class="contact-list">
+                    <li>Jekyll-fr</li>
+                    <li><a href="mailto:contact@jekyll-fr.org">contact@jekyll-fr.org</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col-2">
+                <ul class="social-media-list">
+                    
+                    <li>
+                        <a href="https://jekyll-fr.herokuapp.com" title="Rejoindre jekyll-fr sur Slack"><span class="icon icon--slack"><svg viewbox="0 0 118 118" xmlns="http://www.w3.org/2000/svg"><title>Slack</title>
+<g fill="none" fill-rule="evenodd"><path d="M10.258 62.86c-4.395.032-8.118-2.587-9.49-6.674-.053-.16-.1-.314-.143-.466C-.87 50.484 2.03 45.008 7.23 43.255L90.613 15.32a11.31 11.31 0 0 1 3.046-.446c4.51-.036 8.33 2.64 9.74 6.816l.12.403c1.56 5.452-2.32 10.32-6.96 11.88l-82.92 28.31a10.88 10.88 0 0 1-3.39.576" fill="#70CADB"></path><path d="M24.157 103.867c-4.428.032-8.165-2.55-9.52-6.578-.05-.16-.1-.31-.143-.47a10.28 10.28 0 0 1 6.596-12.59l83.388-28.19a10.71 10.71 0 0 1 3.307-.56c4.442-.036 8.344 2.68 9.72 6.752l.13.426c.803 2.813.328 5.98-1.272 8.477-1.195 1.86-4.96 3.494-4.96 3.494L27.7 103.264c-1.165.39-2.355.593-3.54.604" fill="#E01765"></path><path d="M93.572 104.043a10.233 10.233 0 0 1-9.802-6.976L55.94 14.402l-.14-.465c-1.506-5.27 1.392-10.77 6.59-12.522a10.27 10.27 0 0 1 3.2-.542c1.608-.012 3.164.35 4.63 1.074a10.214 10.214 0 0 1 5.157 5.913l27.828 82.658.08.265c1.563 5.473-1.33 10.976-6.527 12.726-1.03.34-2.103.52-3.184.53" fill="#E8A723"></path><path d="M52.205 117.97a10.242 10.242 0 0 1-9.807-6.984L14.575 28.323a19.1 19.1 0 0 1-.14-.46 10.235 10.235 0 0 1 6.583-12.523 10.333 10.333 0 0 1 3.187-.535 10.24 10.24 0 0 1 9.805 6.98l27.824 82.664c.052.14.1.3.14.45a10.235 10.235 0 0 1-6.588 12.53 10.294 10.294 0 0 1-3.18.53" fill="#3EB890"></path><path d="M79.852 85.43l19.405-6.636-6.343-18.84-19.428 6.568 6.366 18.907" fill="#CC1F27"></path><path d="M38.55 99.55l19.402-6.633-6.39-18.982-19.424 6.567 6.41 19.05" fill="#361238"></path><path d="M66.037 44.396l19.407-6.625-6.268-18.62-19.444 6.52 6.305 18.73" fill="#65863A"></path><path d="M24.73 58.498l19.407-6.625-6.346-18.856-19.44 6.513 6.39 18.968" fill="#1A937D"></path></g></svg>
+</span><span class="username">jekyll-fr</span></a>
+
+                    </li>
+                    <li>
+                        <a href="https://github.com/jekyll-fr" title="Suivre jekyll-fr sur GitHub"><span class="icon icon--github"><svg viewbox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path></svg>
+</span><span class="username">jekyll-fr</span></a>
+
+                    </li>
+                     
+                    <li>
+                        <a href="https://twitter.com/jamstatic_fr" title="Suivre jamstatic_fr sur Twitter"><span class="icon icon--twitter"><svg viewbox="0 0 16 16"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path></svg>
+</span><span class="username">jamstatic_fr</span></a>
+
+                    </li>
+                    
+
+                </ul>
+            </div>
+
+            <div class="footer-col footer-col-3">
+                <p>Communauté francophone des utilisateurs de Jekyll</p>
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+
+  </body>
+</html>

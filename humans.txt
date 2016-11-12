@@ -1,0 +1,26 @@
+/* SITE */
+
+Last Updated: 2016/11/12
+Standards: HTML5, CSS3
+Components: 
+
+/* CONTRIBUTORS */
+
+Name: DirtyF
+Site: https://github.com/DirtyF
+
+Name: bertrandkeller
+Site: https://github.com/bertrandkeller
+
+Name: nhoizey
+Site: https://github.com/nhoizey
+
+Name: tut-tuuut
+Site: https://github.com/tut-tuuut
+
+Name: borisschapira
+Site: https://github.com/borisschapira
+
+Name: P45QU10U
+Site: https://github.com/P45QU10U
+
