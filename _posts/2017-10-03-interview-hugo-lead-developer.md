@@ -2,7 +2,7 @@
 title: Entretien avec Bjørn Erik Pedersen, le développeur principal d'Hugo
 date: "2017-10-03 13:45:36 +0200"
 description: >
-  Bjørn Erik Pedersen répond à nos question sur Hugo, le gestionnaire de site
+  Bjørn Erik Pedersen répond à nos questions sur Hugo, le gestionnaire de site
   statique ultra-rapide.
 slug: interview-hugo-lead-developer
 image: /assets/images/hugo/hugo-bjorn-erik-pedersen.jpg
@@ -20,18 +20,18 @@ aussi tout un tas de fonctionnalités comme les contenus imbriqués, les fichier
 partiels, les shortcodes, la gestion de l'i18n, les exports personnalisés (JSON,
 AMP, epub, Atom, etc.) et bien d'autres… Les nouvelles versions et les
 nouveautés se succèdent à un rythme soutenu. Depuis la v0.14, [Bjørn Erik
-Pedersen](https://github.com/bep) dirige les développements, il a gentimment
-accepté de répondre à nos quesions.
+Pedersen](https://github.com/bep) dirige les développements, il a gentiment
+accepté de répondre à nos questions.
 
 {% include figure.html url="/assets/images/hugo/hugo-bjorn-erik-pedersen.jpg"
 description="<a href=\"https://github.com/bep\">Bjørn Erik Pedersen</a>" %}
 
-## Bonjour Bjørn Erik, comment t'es tu retrouvé impliqué dans Hugo ?
+## Bonjour Bjørn Erik, comment t'es-tu retrouvé impliqué dans Hugo ?
 
-J'ai passé un dimange à migrer mon [blog](http://bepsays.com/en/) de WordPress à
+J'ai passé un dimanche à migrer mon [blog](http://bepsays.com/en/) de WordPress à
 [Jekyll](https://jekyllrb.com), et quand j'ai eu fini je me suis dit "OK, et
 maintenant je fais quoi ?". J'espérais que cela me pousserait à écrire davantage
-sur mon blog. Au cours de ce même après-midi je recherchais déjà des
+sur mon blog. Au cours de ce même après-midi, je recherchais déjà des
 alternatives à Jekyll sur le net et je suis tombé sur Hugo.
 
 J'ai vu des choses que je souhaitais améliorer. Je suis un développeur très
@@ -39,14 +39,14 @@ expérimenté mais mes premières lignes de Go avaient pour but d'améliorer la
 façon de gérer le livereload des CSS, du JavaScript et des images dans Hugo. Je
 crois que ce patch a survécu à tous mes autres changements ultérieurs. À partir
 de là j'ai continué à soumettre des _Pull Requests_, motivé en partie par
-l'apprentissage d'un nouveau langage mais également encouragé par [Steve
-Francia](https://stevefrancia.com/), qui a crée les premières versions d'Hugo.
+l'apprentissage d'un nouveau langage, mais également encouragé par [Steve
+Francia](https://stevefrancia.com/), qui a créé les premières versions d'Hugo.
 Il est très bon pour motiver les gens à contribuer à un projet open source.
 
 ## Quel problème résout Hugo ?
 
 Hugo est une excellente façon de créer et de publier **de nombreux contenus**
-sur le web. Nous recevions beaucoup de questions du genre "comment créer un page
+sur le web. Nous recevions beaucoup de questions du genre "comment créer une page
 unique de présentation de produit" au début. Même si nous savons également très
 bien faire cela, ce n'est pas le cas d'utilisation typique.
 
@@ -62,21 +62,21 @@ très utilisé en Chine et au Japon, ce qui nous amène à relever de nouveaux
 défis. Le fait de développer avec le langage Go nous aide bien. Deux de ces
 créateurs, Ken Thompson et Rob Pike, sont également les créateurs
 d'[UTF-8](https://en.wikipedia.org/wiki/UTF-8). J'ai justement passé pas mal de
-temps sur le support des guillemets français dans Hugo il y a peu. Forcément
-c'est très répandu en France, mais je n'en avais jamais entendu parlé jusqu'ici.
+temps sur le support des guillemets français dans Hugo il y a peu. Forcément,
+c'est très répandu en France, mais je n'en avais jamais entendu parler jusqu'ici.
 
 ## Comment fait Hugo pour aller si vite ?
 
 Je lis souvent qu'"Hugo est rapide parce qu'il est écrit en Go". C'est en partie
 vrai, mais Hugo a doublé sa vitesse deux fois d'affilée dans les dernières
 versions, il y a donc d'autres facteurs. Le mot "rapide" figure dans le slogan
-d'Hugo depuis le premier jour, donc nous devons faire très attention à celà.
+d'Hugo depuis le premier jour, donc nous devons faire très attention à cela.
 
 J'essaie de m'amuser à ne pas ajouter de temps supplémentaire lors de l'ajout de
 nouvelles fonctionnalités :  Le temps de traitement ajouté par la nouvelle
 fonctionnalité doit être compensé par des améliorations dans les fonctionnalités
 existantes, et Go joue un rôle vital à ce niveau. C'est mieux et ça va plus vite à
-chaque nouvelle version mais ce n'est pas simplement que c'est un langage de
+chaque nouvelle version, mais ce n'est pas simplement que c'est un langage de
 programmation compilé avec un modèle de concurrence simple et une bibliothèque
 standard très robuste. C'est aussi grâce à tous les excellents outils fournis
 pour créer rapidement des applications performantes : un compilateur rapide, le
@@ -84,7 +84,7 @@ support intégré des tests et un analyseur de code très simple d'utilisation.
 
 Les ralentissements de performance surviennent toujours là où on les attend le
 moins, vous devez donc faire des tests. Les gains et les pertes de performance
-sont dûs à une succession de petits changements au fil du temps. Et la vitesse
+sont dus à une succession de petits changements au fil du temps. Et la vitesse
 compte. Essayez le serveur d'Hugo avec le Livereload et vous verrez par
 vous-même.
 
@@ -94,7 +94,7 @@ vous-même.
 url="https://thenewdynamic.imgix.net/showcase-labs-us-gov-hugo.jpg?w=700"
 description="<a href=\"https://labs.usa.gov/\">https://labs.usa.gov/</a>" %}
 
-Parmi les sites que je connais et que j'aime bien il y a
+Parmi les sites que je connais et que j'aime bien il y a 
 [labs.usa.gov](https://labs.usa.gov/), [netlify.com](https://www.netlify.com),
 [cdnplanet.com](https://www.cdnplanet.com/),
 [support.balsamiq.com](https://support.balsamiq.com/),
@@ -118,7 +118,7 @@ Nous avons adopté maintenant un processus de publication plus ou moins
 automatisé, je publie donc une nouvelle version à chaque fois que je peux écrire
 un titre et une note de version à partir des nouveautés, soit environ toutes les
 cinq semaines. Et Hugo est très utilisé, c'est difficile à mesurer parce qu'il
-peut être installé à partir de différentes sources, mais j'ai été supris
+peut être installé à partir de différentes sources, mais j'ai été surpris
 d'apprendre qu'il y avait plus de 8000 installations mensuelles rien qu'avec
 `brew` sous macOS.
 Et le site [gohugo.io](https://gohugo.io/) encaisse un trafic élevé.
